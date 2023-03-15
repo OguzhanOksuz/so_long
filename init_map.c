@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/14 22:44:38 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/15 00:01:29 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@
 
 t_map	map_init(char *src)
 {
-//	char	*line;
 	t_map	rt_map;
-//	int		i;
+	int		fd;
 
-//	i = 0;
-//	line = get_next_line(av[1]);
+	fd = open(src, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	rt_map.extension = src + ft_strrchr(src, '.') + 1;
+	read_map(&rt_map, fd);
+	close(fd);
 	return (rt_map);
+}
+
+void	read_map(t_map &rt_map, int fd)
+{
+
 }
 
 int	main(int ac, char **av)
