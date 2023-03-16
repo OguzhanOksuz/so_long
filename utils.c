@@ -6,19 +6,11 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:56:15 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/14 22:39:44 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 00:45:52 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "header.h"
 
 int	ft_strrchr(char *str, int c)
 {

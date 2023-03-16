@@ -6,13 +6,13 @@
 /*   By: Ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 19:34:39 by Ooksuz            #+#    #+#             */
-/*   Updated: 2022/12/09 02:30:14 by Ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 00:47:21 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "header.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
 	size_t	i;
 

@@ -3,7 +3,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	utils.c		\
-	init_map.c
+	init_map.c	\
+     	get_next_line_utils.c	\
+       	get_next_line.c	
 
 
 all: $(NAME)

@@ -6,11 +6,11 @@
 /*   By: Ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:34:22 by Ooksuz            #+#    #+#             */
-/*   Updated: 2022/12/09 03:10:35 by Ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 00:42:52 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "header.h"
 
 char	*ft_trim(char *rd)
 {
