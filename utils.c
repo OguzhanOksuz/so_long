@@ -6,11 +6,21 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:56:15 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 00:45:52 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 14:28:02 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_strrchr(char *str, int c)
 {

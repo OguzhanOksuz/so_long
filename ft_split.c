@@ -1,44 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
+/*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 19:34:39 by Ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 00:47:21 by ooksuz           ###   ########.fr       */
+/*   Created: 2023/03/17 14:18:07 by ooksuz            #+#    #+#             */
+/*   Updated: 2023/03/17 14:25:54 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-int	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-	{
-		if (s[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -63,5 +35,29 @@ char	*ft_strjoin(char *s1, char *s2)
 		rt[i++] = *s2++;
 	rt[i] = 0;
 	free(s1);
+	return (rt);
+}
+
+char	*ft_read(int fd)
+{
+	char	*rd;
+	int		count;
+	char	*rt;
+
+	rt = NULL;
+	count = 1;
+	rd = (char *)malloc(sizeof(char) * (42 + 1));
+	while (count > 0)
+	{
+		count = read(fd, rd, 42);
+		if (count == -1)
+		{
+			free(rd);
+			return (NULL);
+		}
+		rd[count] = 0;
+		rt = ft_strjoin(rt, rd);
+	}
+	free (rd);
 	return (rt);
 }
