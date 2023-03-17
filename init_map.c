@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 21:12:00 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 21:37:09 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	read_map(t_map *rd_map)
 int	is_wall_correct(t_map *rt_map)
 {
 	int	i;
-	
+
 	i = 0;
 	while (rt_map->map[0][i])
 		if (rt_map->map[0][i++] != '1')
@@ -73,16 +73,23 @@ int	is_reachable(t_map *rt_map)
 	flag = 1;
 	while (flag == 1)
 	{
-		i = 0;
-		while (rt_map->map[i])
+		flag = 0;
+		i = -1;
+		while (rt_map->map[++i])
 		{
 			j = 0;
 			while (rt_map->map[i][j])
 			{
-				if
+				if (rt_map->map[i][j++] == 'P')
+				{
+					flag = 1;
+					fill_reachable(rt_map, i, j - 1);
+				}
 			}
 		}
 	}
+	read_map(rt_map);
+	return ((rt_map->coin != 0) || (rt_map->exit != 0));
 }
 
 int	is_map_valid(t_map *rt_map)
