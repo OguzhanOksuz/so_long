@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:15:54 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:20:33 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,24 @@ int	is_map_valid(t_map *rt_map)
 	return (1);
 }
 
+
+void	re_map_reader(t_map *rt_map, char *src)
+{
+	int	i;
+	
+	i = 0;
+	while (rt_map->map[i])
+	{
+		free(rt_map->map[i]);
+		i++;
+	}
+	free(rt_map->map[i]);
+	free(rt_map->map);
+	fd = open(src, O_RDONLY);
+	rt_map->map = ft_split(ft_read(fd), '\n');
+	close(fd);
+}
+
 t_map	*map_init(char *src)
 {
 	t_map	*rt_map;
@@ -109,9 +127,7 @@ t_map	*map_init(char *src)
 	rt_map->row_num = i;
 	read_map(rt_map);
 	rt_map->valid = is_map_valid(rt_map);
-	fd = open(src, O_RDONLY);
-	rt_map->map = ft_split(ft_read(fd), '\n');
-	close(fd);
+	re_map_reader(rt_map, src);;
 	return (rt_map);
 }
 
