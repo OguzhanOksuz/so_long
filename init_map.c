@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 23:39:15 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:02:22 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ t_map	*map_init(char *src)
 	rt_map->row_num = i;
 	read_map(rt_map);
 	rt_map->valid = is_map_valid(rt_map);
+	rt_map->map = ft_split(ft_read(fd), '\n');
 	return (rt_map);
 }
 
