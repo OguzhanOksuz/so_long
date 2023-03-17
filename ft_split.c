@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:18:07 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 14:25:54 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 17:01:58 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,79 @@ char	*ft_read(int fd)
 	}
 	free (rd);
 	return (rt);
+}
+
+char
+	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	str = (char*)malloc(sizeof(*s) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	str[j] = 0;
+	return (str);
+}
+
+int	ftcount(char const *s, char c)
+{
+	int	i;
+	int	count;
+
+	count = 1;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+		else
+			i++;
+	}
+	return (count);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	int		st;
+	char	**str;
+
+	i = 0;
+	st = 0;
+	if (!s)
+		return (NULL);
+	str = malloc((ftcount(s, c)) * sizeof(char *));
+	if (!str)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			st = 0;
+			while (*s && *s != c && ++st)
+				++s;
+			str[i++] = ft_substr(s - st, 0, st);
+		}
+		else
+			++s;
+	}
+	str[i] = 0;
+	return (str);
 }
