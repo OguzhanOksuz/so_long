@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:02:22 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:15:54 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,9 @@ t_map	*map_init(char *src)
 	rt_map->row_num = i;
 	read_map(rt_map);
 	rt_map->valid = is_map_valid(rt_map);
+	fd = open(src, O_RDONLY);
 	rt_map->map = ft_split(ft_read(fd), '\n');
+	close(fd);
 	return (rt_map);
 }
 
@@ -129,6 +131,7 @@ int	main(int ac, char **av)
 	printf("coin = %d\n", ren_map->coin);
 	printf("exit = %d\n", ren_map->exit);
 	printf("enemy = %d\n", ren_map->enemy);
+	system("leeks so_long");
 	(void) ac;
 	(void) ren_map;
 }
