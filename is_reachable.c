@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:13:20 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 23:58:07 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:14:48 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	is_reached_everywhere(t_map *rt_map)
 	return (1);
 }
 
-void	re_map_reader(t_map rt_map)
+void	re_map_reader(t_map *rt_map)
 {
 	int	i;
 	
@@ -82,7 +82,6 @@ void	re_map_reader(t_map rt_map)
 		i++;
 	}
 	free(rt_map->map[i]);
-
 }
 
 int	is_reachable(t_map *rt_map)
