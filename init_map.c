@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:20:55 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:31:18 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	is_map_valid(t_map *rt_map)
 void	re_map_reader(t_map *rt_map, char *src)
 {
 	int	i;
-	int	fd;
 	
 	i = 0;
 	while (rt_map->map[i])
@@ -99,9 +98,7 @@ void	re_map_reader(t_map *rt_map, char *src)
 	}
 	free(rt_map->map[i]);
 	free(rt_map->map);
-	fd = open(src, O_RDONLY);
-	rt_map->map = ft_split(ft_read(fd), '\n');
-	close(fd);
+	rt_map->map = ft_split(src, '\n');
 }
 
 t_map	*map_init(char *src)
@@ -109,13 +106,15 @@ t_map	*map_init(char *src)
 	t_map	*rt_map;
 	int		fd;
 	int		i;
+	char	*rd;
 
 	rt_map = (t_map *)malloc(sizeof(t_map));
 	fd = open(src, O_RDONLY);
 	if (!rt_map || fd < 0)
 		return (NULL);
+	rd = ft_read(fd);
 	rt_map->extension = src + ft_strrchr(src, '.') + 1;
-	rt_map->map = ft_split(ft_read(fd), '\n');
+	rt_map->map = ft_split(rd, '\n');
 	close(fd);
 	i = 0;
 	rt_map->row_len = ft_strlen(rt_map->map[0]);
@@ -128,10 +127,11 @@ t_map	*map_init(char *src)
 	rt_map->row_num = i;
 	read_map(rt_map);
 	rt_map->valid = is_map_valid(rt_map);
-	re_map_reader(rt_map, src);;
+	re_map_reader(rt_map, rd);
+	free(rd);
 	return (rt_map);
 }
-
+/*
 int	main(int ac, char **av)
 {
 	t_map *ren_map = map_init(av[1]);
@@ -148,7 +148,15 @@ int	main(int ac, char **av)
 	printf("coin = %d\n", ren_map->coin);
 	printf("exit = %d\n", ren_map->exit);
 	printf("enemy = %d\n", ren_map->enemy);
-	system("leeks so_long");
+	i = 0;
+	while (ren_map->map[i])
+	{
+		free(ren_map->map[i]);
+		i++;
+	}
+	free(ren_map->map[i]);
+	free(ren_map->map);
+	system("leaks so_long");
 	(void) ac;
 	(void) ren_map;
-}
+}*/

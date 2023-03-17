@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:13:20 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:18:07 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:21:20 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int	is_reachable(t_map *rt_map)
 		if (tmp == player_count(rt_map))
 			break ;
 	}
-	re_map_reader(rt_map);
 	return (is_reached_everywhere(rt_map));
 }
