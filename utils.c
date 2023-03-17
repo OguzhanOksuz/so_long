@@ -6,26 +6,42 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:56:15 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 21:54:07 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 22:31:03 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	fill_reachable(t_map rt_map, int i, int j)
+int	fill_reachable(t_map *rt_map, int i, int j)
 {
-	if (i - 1 > 0 && (rt_map->map[i - 1][j] == '0'
-		|| rt_map->map[i - 1][j] == 'C' || rt_map->map[i - 1][j] == 'E'))
+	int	flag;
+
+	flag = 0;
+	if ((i - 1 > 0) && (rt_map->map[i - 1][j] == '0'
+		|| rt_map->map[i - 1][j] == 'C' || rt_map->map[i - 1][j] == 'E'))
+	{
 		rt_map->map[i - 1][j] = 'P';
-	if (i + 1 < rt_map->row_len - 1 && (rt_map->map[i + 1][j] == '0'
-	|| rt_map->map[i + 1][j] == 'C' || rt_map->map[i + 1][j] == 'E'))
+		flag = 1;
+	}
+	if ((i + 1 < rt_map->row_len - 1) && (rt_map->map[i + 1][j] == '0'
+		|| rt_map->map[i + 1][j] == 'C' || rt_map->map[i + 1][j] == 'E'))
+	{
 		rt_map->map[i + 1][j] = 'P';
-	if (j - 1 > 0 && (rt_map->map[i][j - 1] == '0'
-	|| rt_map->map[i][j - 1] == 'C' || rt_map->map[i][j - 1] == 'E'))
+		flag = 1;
+	}
+	if ((j - 1 > 0) && (rt_map->map[i][j - 1] == '0'
+		|| rt_map->map[i][j - 1] == 'C' || rt_map->map[i][j - 1] == 'E'))
+	{
 		rt_map->map[i][j - 1] = 'P';
-	if (j + 1 < rt_map->row_num - 1 && (rt_map->map[i][j + 1] == '0'
-	|| rt_map->map[i][j + 1] == 'C' || rt_map->map[i][j + 1] == 'E'))
+		flag = 1;
+	}
+	if ((j + 1 < rt_map->row_num - 1) && (rt_map->map[i][j + 1] == '0'
+		|| rt_map->map[i][j + 1] == 'C' || rt_map->map[i][j + 1] == 'E'))
+	{
 		rt_map->map[i][j + 1] = 'P';
+		flag = 1;
+	}
+	return (flag);
 }
 
 int	is_01(char c)
