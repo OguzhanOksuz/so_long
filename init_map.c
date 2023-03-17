@@ -6,12 +6,11 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:40:13 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:52:56 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
 
 void	read_map(t_map *rd_map)
 {
@@ -99,7 +98,7 @@ void	re_map_reader(t_map *rt_map, char *src)
 	free(rt_map->map[i]);
 	free(rt_map->map);
 	rt_map->map = ft_split(src, '\n');
-	free(rd);
+	free(src);
 }
 
 t_map	*map_init(char *src)
