@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 22:31:20 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 23:26:13 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int		ft_strlen(const char *str);
 int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
 int		is_01(char c);
-int		fill_reachable(t_map *rt_map, int i, int j);
+int		is_reachable(t_map *rt_map);
 
 #endif

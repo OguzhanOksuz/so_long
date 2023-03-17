@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	utils.c		\
 	init_map.c	\
-	ft_split.c
+	ft_split.c	\
+	is_reachable.c	
 
 
 all: $(NAME)
