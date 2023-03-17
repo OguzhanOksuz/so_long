@@ -6,11 +6,32 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:56:15 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 14:28:02 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 19:37:08 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+int	is_01(char c)
+{
+	if (c == '1')
+		return (1);
+	if (c == '0')
+		return (1);
+	return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	if (s1[i] == 0 && s2[i] == 0)
+		return (1);
+	return (0);
+}
 
 int	ft_strlen(const char *str)
 {
