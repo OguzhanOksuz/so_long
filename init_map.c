@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 20:54:47 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 21:12:00 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,23 @@ int	is_wall_correct(t_map *rt_map)
 
 int	is_reachable(t_map *rt_map)
 {
+	int	i;
+	int	j;
+	int	flag;
 
+	flag = 1;
+	while (flag == 1)
+	{
+		i = 0;
+		while (rt_map->map[i])
+		{
+			j = 0;
+			while (rt_map->map[i][j])
+			{
+				if
+			}
+		}
+	}
 }
 
 int	is_map_valid(t_map *rt_map)
