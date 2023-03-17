@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 22:32:26 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/17 23:13:02 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,28 +64,6 @@ int	is_wall_correct(t_map *rt_map)
 	return (1);
 }
 
-int	is_reachable(t_map *rt_map)
-{
-	int	i;
-	int	j;
-	int	flag;
-
-	flag = 0;
-	for (int a = 0; a < 50; a++)
-	{
-		i = -1;
-		while (rt_map->map[++i])
-		{
-			j = -1;
-			while (rt_map->map[i][++j])
-				flag = rt_map->map[i][j] == 'P';
-		}
-		//if (fill_reachable(rt_map, i, j - 1) == 0)
-		//	break;
-	}
-	return (0);
-}
-
 int	is_map_valid(t_map *rt_map)
 {
 	if (ft_strcmp(rt_map->extension, "ber") == 0)
@@ -98,10 +76,12 @@ int	is_map_valid(t_map *rt_map)
 		return (-4);
 	if (rt_map->exit != 1)
 		return (-5);
-	if (is_wall_correct(rt_map) == 0)
+	if (rt_map->coin == 0)
 		return (-6);
-	if (is_reachable(rt_map) == 0)
+	if (is_wall_correct(rt_map) == 0)
 		return (-7);
+	if (is_reachable(rt_map) == 0)
+		return (-8);
 	return (1);
 }
 
