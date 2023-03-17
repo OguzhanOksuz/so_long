@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 01:12:25 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 01:21:31 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	error_code(int code)
 int	main(int ac, char **av)
 {
 	t_map	*ren_map;
-	int	fd;
+	int		fd;
 
 	if (ac != 2)
 		return (error_code(-42));
