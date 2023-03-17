@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:31:18 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:34:57 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	is_wall_correct(t_map *rt_map)
 
 int	is_map_valid(t_map *rt_map)
 {
+	read_map(rt_map);
 	if (ft_strcmp(rt_map->extension, "ber") == 0)
 		return (-1);
 	if (rt_map->row_len == -1)
@@ -85,11 +86,10 @@ int	is_map_valid(t_map *rt_map)
 	return (1);
 }
 
-
 void	re_map_reader(t_map *rt_map, char *src)
 {
 	int	i;
-	
+
 	i = 0;
 	while (rt_map->map[i])
 	{
@@ -99,6 +99,7 @@ void	re_map_reader(t_map *rt_map, char *src)
 	free(rt_map->map[i]);
 	free(rt_map->map);
 	rt_map->map = ft_split(src, '\n');
+	free(rd);
 }
 
 t_map	*map_init(char *src)
@@ -125,13 +126,11 @@ t_map	*map_init(char *src)
 		i++;
 	}
 	rt_map->row_num = i;
-	read_map(rt_map);
 	rt_map->valid = is_map_valid(rt_map);
 	re_map_reader(rt_map, rd);
-	free(rd);
 	return (rt_map);
 }
-/*
+
 int	main(int ac, char **av)
 {
 	t_map *ren_map = map_init(av[1]);
@@ -159,4 +158,4 @@ int	main(int ac, char **av)
 	system("leaks so_long");
 	(void) ac;
 	(void) ren_map;
-}*/
+}
