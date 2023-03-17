@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:34:57 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/18 00:40:13 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,33 +129,4 @@ t_map	*map_init(char *src)
 	rt_map->valid = is_map_valid(rt_map);
 	re_map_reader(rt_map, rd);
 	return (rt_map);
-}
-
-int	main(int ac, char **av)
-{
-	t_map *ren_map = map_init(av[1]);
-	int i = ren_map->row_num;
-
-	printf("Format = %s\n", ren_map->extension);
-	printf("row_len = %d\n", ren_map->row_len);
-	printf("row_num = %d\n", ren_map->row_num);
-	while (i--)
-		printf("%s\n", ren_map->map[i]);
-	printf("valid = %d\n", ren_map->valid);
-	printf("wrong = %d\n", ren_map->wrong);
-	printf("player = %d\n", ren_map->player);
-	printf("coin = %d\n", ren_map->coin);
-	printf("exit = %d\n", ren_map->exit);
-	printf("enemy = %d\n", ren_map->enemy);
-	i = 0;
-	while (ren_map->map[i])
-	{
-		free(ren_map->map[i]);
-		i++;
-	}
-	free(ren_map->map[i]);
-	free(ren_map->map);
-	system("leaks so_long");
-	(void) ac;
-	(void) ren_map;
 }
