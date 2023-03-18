@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:56:15 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/17 23:30:21 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 00:51:34 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ int	is_01(char c)
 	if (c == '0')
 		return (1);
 	return (0);
+}
+
+int	is_file_exist(char *src)
+{
+	int	fd;
+
+	fd = open(src, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		return (0);
+	}
+	close(fd);
+	return (1);
 }
 
 int	ft_strcmp(char *s1, char *s2)

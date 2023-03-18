@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:52:56 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 00:48:03 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,55 +67,54 @@ int	is_map_valid(t_map *rt_map)
 {
 	read_map(rt_map);
 	if (ft_strcmp(rt_map->extension, "ber") == 0)
-		return (-1);
+		error_code(-1);
 	if (rt_map->row_len == -1)
-		return (-2);
+		error_code(-2);
 	if (rt_map->wrong != 0)
-		return (-3);
-	if (rt_map->player != 1)
-		return (-4);
-	if (rt_map->exit != 1)
-		return (-5);
-	if (rt_map->coin == 0)
-		return (-6);
+		error_code(-3);
+	if (rt_map->player != 1 || rt_map->exit != 1 || rt_map->coin == 0)
+		error_code(-4);
 	if (is_wall_correct(rt_map) == 0)
-		return (-7);
+		error_code(-5);
 	if (is_reachable(rt_map) == 0)
-		return (-8);
+		error_code (-6);
 	return (1);
 }
 
-void	re_map_reader(t_map *rt_map, char *src)
+void	map_reader(t_map *rt_map, char	*src)
 {
-	int	i;
+	char	*rd;
+	int		i;
+	int		fd;
 
+	fd = open(src, O_RDONLY);
+	if (fd < 0)
+		error_code(-404);
+	rd = ft_read(fd);
+	if (!rd)
+		error_code(-500);
 	i = 0;
-	while (rt_map->map[i])
+	if (rt_map->map)
 	{
+		while (rt_map->map[i])
+			free(rt_map->map[i++]);
 		free(rt_map->map[i]);
-		i++;
+		free(rt_map->map);
 	}
-	free(rt_map->map[i]);
-	free(rt_map->map);
-	rt_map->map = ft_split(src, '\n');
-	free(src);
+	rt_map->map = ft_split(rd, '\n');
+	free(rd);
 }
 
 t_map	*map_init(char *src)
 {
 	t_map	*rt_map;
-	int		fd;
 	int		i;
-	char	*rd;
 
 	rt_map = (t_map *)malloc(sizeof(t_map));
-	fd = open(src, O_RDONLY);
-	if (!rt_map || fd < 0)
-		return (NULL);
-	rd = ft_read(fd);
+	if (!rt_map)
+		error_code(-500);
+	map_reader(rt_map, src);
 	rt_map->extension = src + ft_strrchr(src, '.') + 1;
-	rt_map->map = ft_split(rd, '\n');
-	close(fd);
 	i = 0;
 	rt_map->row_len = ft_strlen(rt_map->map[0]);
 	while (rt_map->map[i])
@@ -126,6 +125,6 @@ t_map	*map_init(char *src)
 	}
 	rt_map->row_num = i;
 	rt_map->valid = is_map_valid(rt_map);
-	re_map_reader(rt_map, rd);
+	map_reader(rt_map, src);
 	return (rt_map);
 }
