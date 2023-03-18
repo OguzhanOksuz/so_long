@@ -16,7 +16,7 @@ SRCS =	utils.c		\
 
 all: $(NAME)
 
-$(NAME): $(ARCS)
+$(NAME):
 	$(CC) $(CFLAGS) $(SRCS) $(FRAEMWORKS) $(ARCS) -o $(NAME)
 
 $(ARCS):
@@ -25,7 +25,6 @@ $(ARCS):
 clean:
 
 fclean:
-	@make -C mlx/ clean
 	rm -rf $(NAME)
 
 

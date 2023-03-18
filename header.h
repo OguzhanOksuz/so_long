@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:13:27 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:42:03 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # define S1_SRC "textures/steve/s1.xpm"
 # define S2_SRC "textures/steve/s2.xpm"
 # define S3_SRC "textures/steve/s3.xpm"
-# define S4_SRCSRC "textures/steve/s4.xpm"
-# define S5_SRCSRC "textures/steve/s5.xpm"
-# define S6_SRCSRC "textures/steve/s6.xpm"
-# define S7_SRCSRC "textures/steve/s7.xpm"
-# define S8_SRCSRC "textures/steve/s8.xpm"
-# define S9_SRCSRC "textures/steve/s9.xpm"
+# define S4_SRC "textures/steve/s4.xpm"
+# define S5_SRC "textures/steve/s5.xpm"
+# define S6_SRC "textures/steve/s6.xpm"
+# define S7_SRC "textures/steve/s7.xpm"
+# define S8_SRC "textures/steve/s8.xpm"
+# define S9_SRC "textures/steve/s9.xpm"
 # define S10_SRC "textures/steve/s10.xpm"
 # define S11_SRC "textures/steve/s11.xpm"
 # define E0_SRC "textures/dragon/e0.xpm"
@@ -77,11 +77,13 @@ typedef struct s_game
 	void	**player_imgs;
 	void	**diamond_imgs;
 	void	**dragon_imgs;
-	void	**portal_imgs;
+	void	*portal_active_img;
+	void	*portal_deactive_img;
 	void	*bricks_img;
 	void	*plank_img;
 	int		player_x;
 	int		player_y;
+	int		res;
 }	t_game;
 
 t_map	*map_init(char *src);
