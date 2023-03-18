@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 01:03:05 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 01:47:10 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "./mlx/mlx.h"
 
 typedef struct s_map
 {
@@ -83,6 +84,7 @@ typedef struct s_game
 }	t_game;
 
 t_map	*map_init(char *src);
+void	init_images(t_game *game);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);
