@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:42:03 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:56:55 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ typedef struct s_game
 	void	*mlx;
 	void	*window;
 	void	**player_imgs;
-	void	**diamond_imgs;
-	void	**dragon_imgs;
-	void	*portal_active_img;
-	void	*portal_deactive_img;
+	void	**coin_imgs;
+	void	**enemy_imgs;
+	void	*portal_a_img;
+	void	*portal_d_img;
 	void	*bricks_img;
 	void	*plank_img;
 	int		player_x;

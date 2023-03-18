@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:13:40 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:49:42 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:58:22 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,30 @@ void	init_player_imgs(t_game *game, int *r)
 	game->player_imgs[11] = mlx_xpm_file_to_image(game->mlx, S10_SRC, r, r);
 }
 
+void	init_coin_imgs(t_game *game, int *r)
+{
+	game->coin_imgs[0] = mlx_xpm_file_to_image(game->mlx, D0_SRC, r, r);
+	game->coin_imgs[1] = mlx_xpm_file_to_image(game->mlx, D1_SRC, r, r);
+	game->coin_imgs[2] = mlx_xpm_file_to_image(game->mlx, D2_SRC, r, r);
+	game->coin_imgs[3] = mlx_xpm_file_to_image(game->mlx, D3_SRC, r, r);
+	game->coin_imgs[4] = mlx_xpm_file_to_image(game->mlx, D4_SRC, r, r);
+	game->coin_imgs[5] = mlx_xpm_file_to_image(game->mlx, D5_SRC, r, r);
+	game->coin_imgs[6] = mlx_xpm_file_to_image(game->mlx, D6_SRC, r, r);
+	game->coin_imgs[7] = mlx_xpm_file_to_image(game->mlx, D7_SRC, r, r);
+	game->coin_imgs[8] = mlx_xpm_file_to_image(game->mlx, D8_SRC, r, r);
+}
+
+void	init_enemy_imgs(t_game, int *r)
+{
+	game->enemy_imgs[0] = mlx_xpm_file_to_image(game->mlx, E0_SRC, r, r);
+	game->enemy_imgs[1] = mlx_xpm_file_to_image(game->mlx, E1_SRC, r, r);
+	game->enemy_imgs[2] = mlx_xpm_file_to_image(game->mlx, E2_SRC, r, r);
+	game->enemy_imgs[3] = mlx_xpm_file_to_image(game->mlx, E3_SRC, r, r);
+	game->enemy_imgs[4] = mlx_xpm_file_to_image(game->mlx, E4_SRC, r, r);
+	game->enemy_imgs[5] = mlx_xpm_file_to_image(game->mlx, E5_SRC, r, r);
+	game->enemy_imgs[6] = mlx_xpm_file_to_image(game->mlx, E6_SRC, r, r);
+}
+
 void	init_images(t_game *game)
 {
 	game->mlx = mlx_init();
@@ -37,9 +61,15 @@ void	init_images(t_game *game)
 	game->window = mlx_new_window(game->mlx, (W * game->ren_map->row_len),
 			(H * game->ren_map->row_num), "So_long");
 	game->player_imgs = (void **)malloc(sizeof(void *) * 12);
-	game->diamond_imgs = (void **)malloc(sizeof(void *) * 9);
-	game->dragon_imgs = (void **)malloc(sizeof(void *) * 7);
-	if (!game->player_imgs || !game->diamond_imgs || !game->dragon_imgs)
+	game->coin_imgs = (void **)malloc(sizeof(void *) * 9);
+	game->enemy_imgs = (void **)malloc(sizeof(void *) * 7);
+	if (!game->player_imgs || !game->coin_imgs || !game->enemy_imgs)
 		error_code(-500);
 	init_player_imgs(game, &game->res);
+	init_coin_imgs(game, &game->res);
+	init_enemy_imgs(game, &game->res);
+	game->portal_a_img = mlx_xpm_file_to_image(game->mlx, PA_SRC, r, r);
+	game->portal_d_img = mlx_xpm_file_to_image(game->mlx, PDA_SRC, r, r);
+	game->bricks_img = mlx_xpm_file_to_image(game->mlx, BRICK_SRC, r, r);
+	game->planks_img = mlx_xpm_file_to_image(game->mlx, PLANK_SRC, r, r);
 }
