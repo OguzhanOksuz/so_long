@@ -9,6 +9,7 @@ ARCS = ./mlx/libmlx.a
 SRCS =	utils.c		\
 	ft_split.c	\
 	is_reachable.c	\
+	map_counter.c	\
 	init_map.c	\
 	init_images.c	\
 	main.c

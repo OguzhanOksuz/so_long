@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 01:47:10 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:01:10 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "./mlx/mlx.h"
+# include <stdio.h>
 
 typedef struct s_map
 {
@@ -93,6 +94,7 @@ int		ft_strlen(const char *str);
 int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
 int		is_01(char c);
+int		player_count(t_map *rt_map);
 int		is_reachable(t_map *rt_map);
 int		is_file_exist(char *str);
 int		error_code(int code);

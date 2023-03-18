@@ -6,37 +6,15 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 00:48:03 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:00:04 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	read_map(t_map *rd_map)
+void	read_map(t_map *rt_map)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (rd_map->map[i])
-	{
-		j = 0;
-		while (rd_map->map[i][j])
-		{
-			if (rd_map->map[i][j] == 'P')
-				rd_map->player++;
-			else if (rd_map->map[i][j] == 'C')
-				rd_map->coin++;
-			else if (rd_map->map[i][j] == 'E')
-				rd_map->exit++;
-			else if (rd_map->map[i][j] == 'X')
-				rd_map->enemy++;
-			else if (is_01(rd_map->map[i][j]) == 0)
-				rd_map->wrong++;
-			j++;
-		}
-		i++;
-	}
+	rt_map->player = player_count(rt_map);
 }
 
 int	is_wall_correct(t_map *rt_map)
@@ -73,7 +51,12 @@ int	is_map_valid(t_map *rt_map)
 	if (rt_map->wrong != 0)
 		error_code(-3);
 	if (rt_map->player != 1 || rt_map->exit != 1 || rt_map->coin == 0)
+	{
+		printf("p = %d\n", rt_map->player);
+		printf("E = %d\n", rt_map->exit);
+		printf("C = %d\n", rt_map->coin);
 		error_code(-4);
+	}
 	if (is_wall_correct(rt_map) == 0)
 		error_code(-5);
 	if (is_reachable(rt_map) == 0)
