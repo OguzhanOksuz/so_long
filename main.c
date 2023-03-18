@@ -6,11 +6,12 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 00:51:22 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 01:14:00 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include <stdio.h>
 
 int	error_code(int code)
 {
@@ -34,6 +35,8 @@ int	error_code(int code)
 		write(2, "You Dieded\n", 11);
 	else if (code == -1024)
 		write(2, "Exit\n", 5);
+	else if (code == -500)
+		write(2, "Error Malloc\n", 14);
 	else
 		write(2, "Error\n", 6);
 	exit(1);
@@ -41,15 +44,17 @@ int	error_code(int code)
 
 int	main(int ac, char **av)
 {
-	t_map	*ren_map;
+	t_game	*game;
 
+	game = (t_game *)malloc(sizeof(t_game));
+	if (!game)
+		error_code(-500);
 	if (ac != 2)
 		return (error_code(-42));
 	else
 	{
-		if (is_file_exist(av[1]) == 0)
-			error_code(-404);
-		ren_map = map_init(av[1]);
+		game->ren_map = map_init(av[1]);
+		init_images(game);
 	}
 	system("leaks so_long");
 	return (0);

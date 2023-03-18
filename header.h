@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 00:56:04 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 01:03:05 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define E0_SRC "textures/dragon/e0.xpm"
 # define E1_SRC "textures/dragon/e1.xpm"
 # define E2_SRC "textures/dragon/e2.xpm"
-# define E3_SRC"textures/dragon/e3.xpm"
+# define E3_SRC "textures/dragon/e3.xpm"
 # define E4_SRC "textures/dragon/e4.xpm"
 # define E5_SRC "textures/dragon/e5.xpm"
 # define E6_SRC "textures/dragon/e6.xpm"
@@ -69,7 +69,7 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map	ren_map;
+	t_map	*ren_map;
 	void	*mlx;
 	void	*window;
 	void	**player_imgs;
