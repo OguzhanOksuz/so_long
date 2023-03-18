@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 01:14:00 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:15:48 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int	main(int ac, char **av)
 		init_images(game);
 	}
 	system("leaks so_long");
+	mlx_loop(game->mlx);
 	return (0);
 }

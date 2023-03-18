@@ -6,16 +6,11 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:00:04 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:07:11 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	read_map(t_map *rt_map)
-{
-	rt_map->player = player_count(rt_map);
-}
 
 int	is_wall_correct(t_map *rt_map)
 {
@@ -43,7 +38,7 @@ int	is_wall_correct(t_map *rt_map)
 
 int	is_map_valid(t_map *rt_map)
 {
-	read_map(rt_map);
+	map_counter(rt_map);
 	if (ft_strcmp(rt_map->extension, "ber") == 0)
 		error_code(-1);
 	if (rt_map->row_len == -1)

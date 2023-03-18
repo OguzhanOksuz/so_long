@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:01:10 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 02:13:27 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_game
 
 t_map	*map_init(char *src);
 void	init_images(t_game *game);
+void	map_counter(t_map *rt_map);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);
@@ -94,8 +95,8 @@ int		ft_strlen(const char *str);
 int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
 int		is_01(char c);
-int		player_count(t_map *rt_map);
 int		is_reachable(t_map *rt_map);
+int		player_count(t_map *rt_map);
 int		is_file_exist(char *str);
 int		error_code(int code);
 

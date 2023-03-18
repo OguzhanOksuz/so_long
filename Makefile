@@ -8,17 +8,19 @@ ARCS = ./mlx/libmlx.a
 
 SRCS =	utils.c		\
 	ft_split.c	\
-	is_reachable.c	\
 	map_counter.c	\
+	is_reachable.c	\
 	init_map.c	\
 	init_images.c	\
 	main.c
 
 all: $(NAME)
 
-$(NAME):
-	@make -C mlx/ all
+$(NAME): $(ARCS)
 	$(CC) $(CFLAGS) $(SRCS) $(FRAEMWORKS) $(ARCS) -o $(NAME)
+
+$(ARCS):
+	@make -C mlx/ all
 
 clean:
 
