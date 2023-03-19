@@ -6,43 +6,49 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:38:11 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:57:50 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	is_wall_correct(t_map *rt_map)
+int	line_counter(char *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+void	is_wall_correct(t_map *rt_map)
 {
 	int	i;
 
 	i = 0;
 	while (rt_map->map[0][i])
 		if (rt_map->map[0][i++] != '1')
-			return (0);
+			error_code(-5);
 	i = 0;
 	while (rt_map->map[rt_map->row_num - 1][i])
 		if (rt_map->map[rt_map->row_num - 1][i++] != '1')
-			return (0);
+			error_code(-5);
 	i = rt_map->row_num - 2;
 	while (i > 0)
 	{
 		if (rt_map->map[i][0] != '1')
-			return (0);
+			error_code(-5);
 		if (rt_map->map[i][rt_map->row_len - 1] != '1')
-			return (0);
+			error_code(-5);
 		i--;
 	}
-	return (1);
-}
-
-int	is_map_valid(t_map *rt_map)
-{
-	if (is_wall_correct(rt_map) == 0)
-		error_code(-5);
-	if (is_reachable(rt_map) == 0)
-		error_code (-6);
-	return (1);
 }
 
 void	map_reader(t_map *rt_map, char *src, int flag)
@@ -65,7 +71,12 @@ void	map_reader(t_map *rt_map, char *src, int flag)
 		free(rt_map->map[i++]);
 		free(rt_map->map);
 	}
+	i = 0;
 	rt_map->map = ft_split(rd, '\n');
+	while (rt_map->map[i])
+		i++;
+	if (i != line_counter(rd))
+		error_code(-2);
 	free(rd);
 }
 
@@ -90,7 +101,8 @@ t_map	*map_init(char *src)
 	}
 	rt_map->row_num = i;
 	map_counter(rt_map);
-	rt_map->valid = is_map_valid(rt_map);
+	is_wall_correct(rt_map);
+	is_reachable(rt_map);
 	map_reader(rt_map, src, 1);
 	print_map(rt_map);
 	return (rt_map);

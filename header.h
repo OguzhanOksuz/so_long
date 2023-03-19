@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:34:47 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:53:52 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_map
 {
 	int		row_len;
 	int		row_num;
-	int		valid;
 	int		coins;
 	int		enemies;
 	char	**map;
@@ -66,51 +65,51 @@ typedef struct s_map
 
 typedef struct s_walls
 {
-	int	*walls;
-	int	*wall_i;
-	int	*wall_j;
+	int		*walls;
+	int		*wall_i;
+	int		*wall_j;
 	void	*wall_img;
 }	t_walls;
 
 typedef struct s_floors
 {
-	int	*floors;
-	int	*floor_i;
-	int	*floor_j;
+	int		*floors;
+	int		*floor_i;
+	int		*floor_j;
 	void	*floor_img;
 }	t_floors;
 
 typedef struct s_exit
 {
-	int	*coins;
-	int	exit_i;
-	int	exit_j;
+	int		*coins;
+	int		exmit_i;
+	int		exit_j;
 	void	**exit_imgs;
 }	t_exit;
 
 typedef struct s_coins
 {
-	int	*coins;
-	int	*coin_i;
-	int	*coin_j;
-	int	frame;
+	int		*coins;
+	int		*coin_i;
+	int		*coin_j;
+	int		frame;
 	void	**coin_imgs;
 }	t_coins;
 
 typedef struct s_enemies
 {
-	int	*enemise;
-	int	*enemy_i;
-	int	*enemy_j;
-	int	frame;
+	int		*enemise;
+	int		*enemy_i;
+	int		*enemy_j;
+	int		frame;
 	void	**enemy_imgs;
 }	t_enemies;
 
 typedef struct s_player
 {
-	int	player_i;
-	int	player_j;
-	int	frame;
+	int		player_i;
+	int		player_j;
+	int		frame;
 	void	**player_imgs;
 }	t_player;
 
@@ -118,9 +117,9 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
-	int		move;
-	int		*row_len;
-	int		*row_num;
+	int			move;
+	int			*row_len;
+	int			*row_num;
 	t_map		*map;
 	t_walls		*walls;
 	t_floors	*floors;
@@ -133,6 +132,7 @@ typedef struct s_game
 t_map	*map_init(char *src);
 void	init_images(t_game *game);
 void	map_counter(t_map *rt_map);
+void	is_reachable(t_map *rt_map);
 void	try_exit(t_game *game);
 void	to_die(t_game *game);
 void	to_move(t_game *game, int i, int j, int key);
@@ -153,10 +153,10 @@ int		ft_strlen(const char *str);
 int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
 int		is_01(char c);
-int		is_reachable(t_map *rt_map);
 int		is_file_exist(char *str);
 int		error_code(int code);
-
+int		char_counter(t_map *map, char c);
+int		is_moveable(t_map *map, int i, int j);
 
 void	print_map(t_map *map);
 

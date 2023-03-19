@@ -6,57 +6,11 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:55:05 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:37:46 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:47:50 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	player_count(t_map *rt_map)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (rt_map->map[i])
-	{
-		j = 0;
-		while (rt_map->map[i][j])
-		{
-			if (rt_map->map[i][j] == 'P')
-				count++;
-			if (count > 1)
-				error_code(-4);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	exit_count(t_map *rt_map)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (rt_map->map[i])
-	{
-		j = 0;
-		while (rt_map->map[i][j])
-		{
-			if (rt_map->map[i][j] == 'E')
-				count++;
-			if (count > 1)
-				error_code(-4);
-			j++;
-		}
-		i++;
-	}
-}
 
 int	char_counter(t_map *map, char c)
 {
@@ -97,8 +51,10 @@ void	map_counter(t_map *map)
 				error_code(-3);
 		}
 	}
-	player_count(map);
-	exit_count(map);
+	if (char_counter(map, 'P') != 1)
+		error_code(-4);
+	if (char_counter(map, 'E') != 1)
+		error_code(-4);
 	map->coins = char_counter(map, 'C');
 	if (map->coins == 0)
 		error_code(-4);
