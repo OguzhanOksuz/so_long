@@ -6,12 +6,12 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:29:22 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:38:11 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-/*
+
 int	is_wall_correct(t_map *rt_map)
 {
 	int	i;
@@ -38,27 +38,13 @@ int	is_wall_correct(t_map *rt_map)
 
 int	is_map_valid(t_map *rt_map)
 {
-	map_counter(rt_map);
-	if (ft_strcmp(rt_map->extension, "ber") == 0)
-		error_code(-1);
-	if (rt_map->row_len == -1)
-		error_code(-2);
-	if (rt_map->wrong != 0)
-		error_code(-3);
-	if (rt_map->player != 1 || rt_map->exit != 1 || rt_map->coin == 0)
-	{
-		printf("p = %d\n", rt_map->player);
-		printf("E = %d\n", rt_map->exit);
-		printf("C = %d\n", rt_map->coin);
-		error_code(-4);
-	}
 	if (is_wall_correct(rt_map) == 0)
 		error_code(-5);
 	if (is_reachable(rt_map) == 0)
 		error_code (-6);
 	return (1);
 }
-*/
+
 void	map_reader(t_map *rt_map, char *src, int flag)
 {
 	char	*rd;
@@ -99,12 +85,12 @@ t_map	*map_init(char *src)
 	while (rt_map->map[i])
 	{
 		if (ft_strlen(rt_map->map[i]) != rt_map->row_len)
-			rt_map->row_len = -1;
+			error_code(-2);
 		i++;
 	}
 	rt_map->row_num = i;
 	map_counter(rt_map);
-//	rt_map->valid = is_map_valid(rt_map);
+	rt_map->valid = is_map_valid(rt_map);
 	map_reader(rt_map, src, 1);
 	print_map(rt_map);
 	return (rt_map);

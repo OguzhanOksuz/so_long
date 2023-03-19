@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:55:05 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:34:18 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:37:46 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ void	map_counter(t_map *map)
 	player_count(map);
 	exit_count(map);
 	map->coins = char_counter(map, 'C');
+	if (map->coins == 0)
+		error_code(-4);
 	map->enemies = char_counter(map, 'X');
 }
