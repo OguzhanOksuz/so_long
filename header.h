@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 11:05:04 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 13:48:29 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,59 @@ typedef struct s_map
 	int		row_num;
 	int		valid;
 	int		player;
-	int		coin;
+	int		*coin;
 	int		exit;
-	int		enemy;
+	int		*enemy;
 	int		wrong;
 	char	*extension;
 	char	**map;
 }	t_map;
+
+typedef struct s_walls
+{
+	int	*walls;
+	int	*wall_i;
+	int	*wall_j;
+	void	*wall_img;
+}	t_walls;
+
+typedef struct s_floors
+{
+	int	*floors;
+	int	*floor_i;
+	int	*floor_j;
+	void	*floor_img;
+}	t_floors;
+
+typedef struct s_coins
+{
+	int	*coins;
+	int	*coin_i;
+	int	*coin_j;
+	int	frame;
+	void	**coin_imgs;
+}	t_coins;
+
+typedef struct s_player
+{
+	int	player_i;
+	int	player_j;
+	int	frame;
+	void	**player_imgs;
+}	t_player;
+
+typedef struct	s_
+
+typedef struct s_bricks
 
 typedef struct s_game
 {
 	t_map	*ren_map;
 	void	*mlx;
 	void	*window;
-	void	**player_imgs;
-	void	**coin_imgs;
 	void	**enemy_imgs;
 	void	*portal_a_img;
 	void	*portal_d_img;
-	void	*brick_img;
 	void	*plank_img;
 	int		player_i;
 	int		player_j;
@@ -98,6 +132,10 @@ void	to_down(t_game *game);
 void	to_right(t_game *game);
 void	to_up(t_game *game);
 void	get_player_cordinates(t_game *game);
+void	render_engine(t_game *game);
+void	put_player(t_game *game, int code, int i, int j);
+void	put_coins(t_game *game, int code, int i, int j);
+void	put_enemy(t_game *game, int code, int i, int j);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

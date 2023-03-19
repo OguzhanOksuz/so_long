@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 12:15:35 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 13:19:46 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ int	physics_engine(int key, t_game *game)
 		to_right(game);
 	if (key == 13 || key == 126)
 		to_up(game);
+	//?******
 	printf("key = %d\n", key);
-	print_game(game);
+	print_game(game);	
+	render_engine(game);
+	//****
 	return (1);
 }
 
@@ -83,7 +86,7 @@ int	main(int ac, char **av)
 		print_game(game);
 		mlx_hook(game->window, 2, 0, physics_engine, game);
 		mlx_loop(game->mlx);
-//		render_engine(game);
+		render_engine(game);
 	}
 	system("leaks so_long");
 	return (0);

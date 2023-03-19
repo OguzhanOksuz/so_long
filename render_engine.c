@@ -6,11 +6,34 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 04:19:21 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 13:36:47 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	render_cordinate(t_game *game, int i, int j)
+{
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->plank_img, j * game->res, i * game->res);
+	if (game->ren_map->map[i][j] == '1')
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->brick_img, j * game->res, i * game->res);
+	if (game->ren_map->map[i][j] == 'X')
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->enemy_imgs[0], j * game->res, i * game->res);
+	if (game->ren_map->map[i][j] == 'P')
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->player_imgs[0], j * game->res, i * game->res);
+	if (game->ren_map->map[i][j] == 'E' && game->ren_map->coin == 0)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->portal_a_img, j * game->res, i * game->res);
+	if (game->ren_map->map[i][j] == 'E' && game->ren_map->coin != 0)
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->portal_d_img, j * game->res, i * game->res);
+}
+
+//-*********-****-****
 
 void	draw_exit(t_game *g)
 {
@@ -53,7 +76,7 @@ void	draw_player(t_game *game)
 		while (game->ren_map->map[i][j])
 		{
 			if (game->ren_map->map[i][j] == 'P')
-				put_player(game, code, i, j);
+				put_player(game, code++, i, j);
 			j++;
 		}
 		i++;
@@ -75,7 +98,7 @@ void	draw_coins(t_game *game)
 		while (game->ren_map->map[i][j])
 		{
 			if (game->ren_map->map[i][j] == 'C')
-				put_coins(game, code, i, j);
+				put_coins(game, code++, i, j);
 			j++;
 		}
 		i++;
@@ -97,7 +120,7 @@ void	draw_enemies(t_game *game)
 		while (game->ren_map->map[i][j])
 		{
 			if (game->ren_map->map[i][j] == 'X')
-				put_enemy(game, code, i, j);
+				put_enemy(game, code++, i, j);
 			j++;
 		}
 		i++;
@@ -117,18 +140,9 @@ void	render_engine(t_game *game)
 		j = 0;
 		while (game->ren_map->map[i][j])
 		{
-			mlx_put_image_to_window(game->mlx, game->window,
-				game->plank_img, j * game->res, i * game->res);
-			if (game->ren_map->map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->brick_img,
-					j * game->res, i * game->res);
+			render_cordinate(game, i, j);
 			j++;
 		}
 		i++;
 	}
-	draw_exit(game);
-	draw_player(game);
-	draw_coins(game);
-	draw_enemies(game);
 }
