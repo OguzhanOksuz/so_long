@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 20:00:41 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 23:29:49 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ typedef struct s_game
 	int			*coin;
 	int			*player_i;
 	int			*player_j;
+	int			exit_i;
+	int			exit_j;
 	char		**m;
 	t_map		*map;
 	t_coins		*coins;
@@ -118,11 +120,19 @@ void	to_left(t_game *game);
 void	to_down(t_game *game);
 void	to_right(t_game *game);
 void	to_up(t_game *game);
+void	to_collect(t_coins *coins, int i, int j);
 void	get_player_cordinates(t_game *game);
 void	render_engine(t_game *game);
 void	put_player(t_game *game, int code, int i, int j);
 void	put_coins(t_game *game, int code, int i, int j);
 void	put_enemy(t_game *game, int code, int i, int j);
+void	draw_exit(t_game *g, int i, int j);
+void	draw_floor(t_game *g, int i, int j);
+void	draw_wall(t_game *g, int i, int j);
+void	draw_player(t_game *g, int i, int j);
+void	draw_coin(t_game *g, int i, int j);
+void	render_map(t_game *game);
+void	render_move(t_game *game, int key);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

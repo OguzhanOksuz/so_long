@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:17:12 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 20:01:32 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 23:34:56 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,26 @@ void	player_cordinates(t_map *map, t_player *player)
 	}
 }
 
+void	exit_cordinates(t_map *map, t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map->map[++i])
+	{
+		j = -1;
+		while (map->map[i][++j])
+		{
+			if (map->map[i][j] == 'P')
+			{
+				game->exit_i = i;
+				game->exit_j = j;
+			}
+		}
+	}
+}
+
 void	init_structs(t_game *game)
 {
 	t_coins		*coins;
@@ -101,4 +121,5 @@ void	init_structs(t_game *game)
 	game->coin = &game->map->coins;
 	game->player_i = &game->player->player_i;
 	game->player_j = &game->player->player_j;
+	exit_cordinates(game->map, game);
 }

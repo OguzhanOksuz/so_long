@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 19:59:05 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 23:32:24 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ int	physics_engine(int key, t_game *game)
 	if (key == 13 || key == 126)
 		to_up(game);
 
-//	printf("key = %d\n", key);
-	print_game(game);	
-//	render_engine(game);
-//	
+	render_move(game, key);
+	render_cordinate(game, game->exit_i, game->exit_j);
+	print_game(game);
 	return (1);
 }
 
@@ -71,13 +70,14 @@ int	main(int ac, char **av)
 	else
 	{
 		game->map = map_init(av[1]);
+		if (game->map->enemies != 0)
+			error_code(-3);
 		init_structs(game);
 		init_images(game);
+		render_map(game);
 		mlx_hook(game->window, 2, 0, physics_engine, game);
-	//	mlx_loop(game->mlx);
-	//	render_engine(game);
+		mlx_loop(game->mlx);
 	}
-	(void) av;
 	system("leaks so_long");
 	return (0);
 }
