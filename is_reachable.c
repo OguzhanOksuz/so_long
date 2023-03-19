@@ -6,12 +6,12 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:13:20 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:10:50 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 14:56:38 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
+/*
 void	fill_reachable(t_map *rt_map, int i, int j)
 {
 	if ((i - 1 > 0) && (rt_map->map[i - 1][j] == '0'
@@ -26,28 +26,6 @@ void	fill_reachable(t_map *rt_map, int i, int j)
 	if ((j + 1 < rt_map->row_len) && (rt_map->map[i][j + 1] == '0'
 		|| rt_map->map[i][j + 1] == 'C' || rt_map->map[i][j + 1] == 'E'))
 		rt_map->map[i][j + 1] = 'P';
-}
-
-int	player_count(t_map *rt_map)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (rt_map->map[i])
-	{
-		j = 0;
-		while (rt_map->map[i][j])
-		{
-			if (rt_map->map[i][j] == 'P')
-				count++;
-			j++;
-		}
-		i++;
-	}
-	return (count);
 }
 
 int	is_reached_everywhere(t_map *rt_map)
@@ -96,4 +74,4 @@ int	is_reachable(t_map *rt_map)
 			break ;
 	}
 	return (is_reached_everywhere(rt_map));
-}
+}*/

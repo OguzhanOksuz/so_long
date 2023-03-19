@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 13:59:14 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:34:47 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,8 @@ typedef struct s_map
 	int		row_len;
 	int		row_num;
 	int		valid;
-	int		*player;
-	int		*coins;
-	int		exit;
-	int		*enemies;
-	int		wrong;
-	char	*extension;
+	int		coins;
+	int		enemies;
 	char	**map;
 }	t_map;
 
@@ -84,9 +80,9 @@ typedef struct s_floors
 	void	*floor_img;
 }	t_floors;
 
-tpedef struct s_exit
+typedef struct s_exit
 {
-	int	*active;
+	int	*coins;
 	int	exit_i;
 	int	exit_j;
 	void	**exit_imgs;
@@ -123,7 +119,9 @@ typedef struct s_game
 	void		*mlx;
 	void		*window;
 	int		move;
-	t_map		*ren_map;
+	int		*row_len;
+	int		*row_num;
+	t_map		*map;
 	t_walls		*walls;
 	t_floors	*floors;
 	t_exit		*exit;
@@ -156,8 +154,10 @@ int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
 int		is_01(char c);
 int		is_reachable(t_map *rt_map);
-int		player_count(t_map *rt_map);
 int		is_file_exist(char *str);
 int		error_code(int code);
+
+
+void	print_map(t_map *map);
 
 #endif

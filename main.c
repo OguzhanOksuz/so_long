@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 13:19:46 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:07:57 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	error_code(int code)
 		write(2, "Error\n", 6);
 	exit(1);
 }
-
+/*
 void	print_game(t_game *game)
 {
 	printf("move = %d\n", game->move);
@@ -61,13 +61,13 @@ int	physics_engine(int key, t_game *game)
 		to_right(game);
 	if (key == 13 || key == 126)
 		to_up(game);
-	//?******
-	printf("key = %d\n", key);
-	print_game(game);	
-	render_engine(game);
-	//****
+
+//	printf("key = %d\n", key);
+//	print_game(game);	
+//	render_engine(game);
+//	
 	return (1);
-}
+} */
 
 int	main(int ac, char **av)
 {
@@ -80,14 +80,15 @@ int	main(int ac, char **av)
 		return (error_code(-42));
 	else
 	{
-		game->ren_map = map_init(av[1]);
-		init_images(game);
-		get_player_cordinates(game);
-		print_game(game);
-		mlx_hook(game->window, 2, 0, physics_engine, game);
-		mlx_loop(game->mlx);
-		render_engine(game);
+		game->map = map_init(av[1]);
+	//	init_images(game);
+	//	get_player_cordinates(game);
+	//	print_game(game);
+	//	mlx_hook(game->window, 2, 0, physics_engine, game);
+	//	mlx_loop(game->mlx);
+	//	render_engine(game);
 	}
+	(void) av;
 	system("leaks so_long");
 	return (0);
 }
