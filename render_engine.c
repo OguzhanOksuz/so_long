@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 04:08:01 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 04:08:29 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	render_engine(t_game *game)
 		}
 		i++;
 	}
-	draw_exit(game);	
+	draw_exit(game);
 	draw_player(game);
 	draw_coins(game);
 	draw_enemies(game);
