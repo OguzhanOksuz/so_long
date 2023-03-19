@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:50:12 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:56:13 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_exit(t_game *g)
 		j = 0;
 		while (g->ren_map->map[i][j])
 		{
-			if (g->ren_map->map[i][j]== 'E')
+			if (g->ren_map->map[i][j] == 'E')
 			{
 				if (g->ren_map->coin == 0)
 					mlx_put_image_to_window(g->mlx,
@@ -38,6 +38,30 @@ void	draw_exit(t_game *g)
 		}
 		i++;
 	}
+}
+
+void	draw_player(t_game *game)
+{
+	static int	code = 0;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (game->ren_map->map[i])
+	{
+		j = 0;
+		while (game->ren_map->map[i][j])
+		{
+			if (game->ren_map->map[i][j] == 'P')
+				mlx_put_image_to_window(game->mlx, game->window,
+					game->player_imgs[code++],
+					j * game->res, i * game->res);
+			j++;
+		}
+		i++;
+	}
+	if (code == 12)
+		code = 11;
 }
 
 void	render_engine(t_game *game)
@@ -61,8 +85,10 @@ void	render_engine(t_game *game)
 		}
 		i++;
 	}
-	draw_exit(game);
-//	draw_player(game);
+	draw_exit(game);	
+	draw_player(game);
+	usleep(500);
+	draw_player(game);
 //	draw_coins(game);
 //	draw_enemies(game);
 }
