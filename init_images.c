@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 02:13:40 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:58:22 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:07:44 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_coin_imgs(t_game *game, int *r)
 	game->coin_imgs[8] = mlx_xpm_file_to_image(game->mlx, D8_SRC, r, r);
 }
 
-void	init_enemy_imgs(t_game, int *r)
+void	init_enemy_imgs(t_game *game, int *r)
 {
 	game->enemy_imgs[0] = mlx_xpm_file_to_image(game->mlx, E0_SRC, r, r);
 	game->enemy_imgs[1] = mlx_xpm_file_to_image(game->mlx, E1_SRC, r, r);
@@ -50,6 +50,14 @@ void	init_enemy_imgs(t_game, int *r)
 	game->enemy_imgs[4] = mlx_xpm_file_to_image(game->mlx, E4_SRC, r, r);
 	game->enemy_imgs[5] = mlx_xpm_file_to_image(game->mlx, E5_SRC, r, r);
 	game->enemy_imgs[6] = mlx_xpm_file_to_image(game->mlx, E6_SRC, r, r);
+}
+
+void	init_static_imgs(t_game *game, int *r)
+{
+	game->portal_a_img = mlx_xpm_file_to_image(game->mlx, PA_SRC, r, r);
+	game->portal_d_img = mlx_xpm_file_to_image(game->mlx, PDA_SRC, r, r);
+	game->brick_img = mlx_xpm_file_to_image(game->mlx, BRICK_SRC, r, r);
+	game->plank_img = mlx_xpm_file_to_image(game->mlx, PLANK_SRC, r, r);
 }
 
 void	init_images(t_game *game)
@@ -68,8 +76,5 @@ void	init_images(t_game *game)
 	init_player_imgs(game, &game->res);
 	init_coin_imgs(game, &game->res);
 	init_enemy_imgs(game, &game->res);
-	game->portal_a_img = mlx_xpm_file_to_image(game->mlx, PA_SRC, r, r);
-	game->portal_d_img = mlx_xpm_file_to_image(game->mlx, PDA_SRC, r, r);
-	game->bricks_img = mlx_xpm_file_to_image(game->mlx, BRICK_SRC, r, r);
-	game->planks_img = mlx_xpm_file_to_image(game->mlx, PLANK_SRC, r, r);
+	init_static_imgs(game, &game->res);
 }

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:56:55 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:07:51 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_game
 	void	**enemy_imgs;
 	void	*portal_a_img;
 	void	*portal_d_img;
-	void	*bricks_img;
+	void	*brick_img;
 	void	*plank_img;
 	int		player_x;
 	int		player_y;
