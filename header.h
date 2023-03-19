@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:29:49 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 23:38:33 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	draw_player(t_game *g, int i, int j);
 void	draw_coin(t_game *g, int i, int j);
 void	render_map(t_game *game);
 void	render_move(t_game *game, int key);
+void	render_cordinate(t_game *game, int i, int j);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

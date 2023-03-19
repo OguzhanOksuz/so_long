@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:17:12 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:34:56 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 23:38:49 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	exit_cordinates(t_map *map, t_game *game)
 		j = -1;
 		while (map->map[i][++j])
 		{
-			if (map->map[i][j] == 'P')
+			if (map->map[i][j] == 'E')
 			{
 				game->exit_i = i;
 				game->exit_j = j;
