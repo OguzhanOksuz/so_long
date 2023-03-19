@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:38:02 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:24:17 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,27 @@ int	error_code(int code)
 		write(2, "Error file did not found\n", 26);
 	else if (code == -101010)
 		write(2, "You Dieded\n", 11);
-	else if (code == -1024)
-		write(2, "Exit\n", 5);
 	else if (code == -500)
 		write(2, "Error Malloc\n", 14);
 	else
-		write(2, "Error\n", 6);
+		write(1, "Exit Game\n", 10);
 	exit(1);
 }
 
 int	physics_engine(int key, t_game *game)
 {
-	if (key == 0 || key == 123)
+	if (key == 0)
 		to_left(game);
-	if (key == 1 || key == 125)
+	if (key == 1)
 		to_down(game);
-	if (key == 2 || key == 124)
+	if (key == 2)
 		to_right(game);
-	if (key == 13 || key == 126)
+	if (key == 13)
 		to_up(game);
-
+	if (key == 53)
+		error_code(1);
 	render_move(game, key);
 	render_cordinate(game, game->exit_i, game->exit_j);
-	print_game(game);
 	return (1);
 }
 
@@ -76,8 +74,8 @@ int	main(int ac, char **av)
 		init_images(game);
 		render_map(game);
 		mlx_hook(game->window, 2, 0, physics_engine, game);
+		mlx_hook(game->window, 17, 0, error_code, NULL);
 		mlx_loop(game->mlx);
 	}
-	system("leaks so_long");
 	return (0);
 }
