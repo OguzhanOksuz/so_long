@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 04:28:11 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 12:40:52 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 12:41:50 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	to_left(t_game *game)
 	int	i;
 	int	j;
 
-	i = game->player_j;
-	j = game->player_i;
+	i = game->player_i;
+	j = game->player_j;
 	if (j > 0)
 	{
 		if (game->ren_map->map[i][j - 1] == 'E')
