@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 18:59:23 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 19:19:15 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 		game->map = map_init(av[1]);
 		init_structs(game);
 		print_game(game);
-	//	init_images(game);
+//		init_images(game);
 	//	mlx_hook(game->window, 2, 0, physics_engine, game);
 	//	mlx_loop(game->mlx);
 	//	render_engine(game);

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 18:58:09 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 19:17:28 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,25 @@ typedef struct s_map
 
 typedef struct s_coins
 {
-	int	*coins_c;
-	int	**coin_pos;
-	int	frame;
+	int		*coins_c;
+	int		**coin_pos;
+	int		frame;
 	void	**coin_imgs;
 }	t_coins;
 
 typedef struct s_enemies
 {
-	int	*enemies_c;
-	int	**enemy_pos;
-	int	frame;
+	int		*enemies_c;
+	int		**enemy_pos;
+	int		frame;
 	void	**enemy_imgs;
 }	t_enemies;
 
 typedef struct s_player
 {
-	int	player_i;
-	int	player_j;
-	int	frame;
+	int		player_i;
+	int		player_j;
+	int		frame;
 	void	**player_imgs;
 }	t_player;
 
@@ -94,8 +94,8 @@ typedef struct s_game
 	void		*wall_img;
 	void		*floor_img;
 	void		**exit_img;
-	int		move;
-	int		*coin;
+	int			move;
+	int			*coin;
 	char		**m;
 	t_map		*map;
 	t_coins		*coins;
