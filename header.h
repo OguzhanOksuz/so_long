@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 17:53:56 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 18:58:09 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_coins
 
 typedef struct s_enemies
 {
-	int	*enemise;
-	int	*enemy_pos;
+	int	*enemies_c;
+	int	**enemy_pos;
 	int	frame;
 	void	**enemy_imgs;
 }	t_enemies;
@@ -95,6 +95,8 @@ typedef struct s_game
 	void		*floor_img;
 	void		**exit_img;
 	int		move;
+	int		*coin;
+	char		**m;
 	t_map		*map;
 	t_coins		*coins;
 	t_enemies	*enemies;
@@ -130,6 +132,6 @@ int		is_file_exist(char *str);
 int		error_code(int code);
 int		char_counter(t_map *map, char c);
 
-void	print_map(t_map *map);
+void	print_game(t_game *game);
 
 #endif
