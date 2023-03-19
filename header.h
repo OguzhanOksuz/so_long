@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 19:17:28 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 20:00:41 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,12 @@ typedef struct s_game
 	void		*window;
 	void		*wall_img;
 	void		*floor_img;
-	void		**exit_img;
+	void		**exit_imgs;
 	int			move;
+	int			res;
 	int			*coin;
+	int			*player_i;
+	int			*player_j;
 	char		**m;
 	t_map		*map;
 	t_coins		*coins;

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:17:12 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 19:16:27 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 20:01:32 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,6 @@ void	init_structs(t_game *game)
 	game->player = player;
 	game->move = 0;
 	game->coin = &game->map->coins;
+	game->player_i = &game->player->player_i;
+	game->player_j = &game->player->player_j;
 }

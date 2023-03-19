@@ -6,19 +6,19 @@ LDFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit
 FRAEMWORKS=-framework OpenGL -framework AppKit
 ARCS = ./mlx/libmlx.a
 
-PASE =	init_images.c		\
-	physics_engine.c	\
-	render_engine.c		\
+PASE = 	render_engine.c		\
 	image_put_engine.c	\
-	move_map.c		
 
 SRCS =	utils.c			\
 	ft_split.c		\
 	is_reachable.c		\
 	init_map.c		\
 	init_structs.c		\
+	init_images.c		\
+	physics_engine.c	\
 	map_counter.c		\
 	debugger.c		\
+	move_map.c		\
 	main.c
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:08:25 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 19:09:25 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 19:57:56 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	print_map(t_map *map)
 
 void	print_game(t_game *game)
 {
+	printf("\033[2J");
+    	printf("\033[H"); 
 	print_map(game->map);
 	print_player(game->player);
 	print_coins(game->coins);
