@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:56:13 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 04:08:01 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	draw_exit(t_game *g)
 void	draw_player(t_game *game)
 {
 	static int	code = 0;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	while (game->ren_map->map[i])
@@ -53,15 +53,57 @@ void	draw_player(t_game *game)
 		while (game->ren_map->map[i][j])
 		{
 			if (game->ren_map->map[i][j] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->player_imgs[code++],
-					j * game->res, i * game->res);
+				put_player(game, code, i, j);
 			j++;
 		}
 		i++;
 	}
 	if (code == 12)
-		code = 11;
+		code = 0;
+}
+
+void	draw_coins(t_game *game)
+{
+	static int	code = 0;
+	int			i;
+	int			j;
+
+	i = 0;
+	while (game->ren_map->map[i])
+	{
+		j = 0;
+		while (game->ren_map->map[i][j])
+		{
+			if (game->ren_map->map[i][j] == 'C')
+				put_player(game, code, i, j);
+			j++;
+		}
+		i++;
+	}
+	if (code == 9)
+		code = 0;
+}
+
+void	draw_enemies(t_game *game)
+{
+	static int	code = 0;
+	int			i;
+	int			j;
+
+	i = 0;
+	while (game->ren_map->map[i])
+	{
+		j = 0;
+		while (game->ren_map->map[i][j])
+		{
+			if (game->ren_map->map[i][j] == 'X')
+				put_enemy(game, code, i, j);
+			j++;
+		}
+		i++;
+	}
+	if (code == 7)
+		code = 0;
 }
 
 void	render_engine(t_game *game)
@@ -87,8 +129,6 @@ void	render_engine(t_game *game)
 	}
 	draw_exit(game);	
 	draw_player(game);
-	usleep(500);
-	draw_player(game);
-//	draw_coins(game);
-//	draw_enemies(game);
+	draw_coins(game);
+	draw_enemies(game);
 }
