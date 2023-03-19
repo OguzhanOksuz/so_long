@@ -12,8 +12,8 @@ SRCS =	utils.c			\
 	is_reachable.c		\
 	init_map.c		\
 	init_images.c		\
-	render_engine.c		\
-	image_put_engine.c	\
+	physics_engine.c	\
+	move_map.c		\
 	main.c
 
 all: $(NAME)

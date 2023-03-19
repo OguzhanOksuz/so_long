@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 04:27:35 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 10:53:27 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ int	error_code(int code)
 	else
 		write(2, "Error\n", 6);
 	exit(1);
+}
+
+int	physics_engine(int key, t_game *game)
+{
+	if (key == 0 || key == 123)
+		to_left(game);
+	if (key == 1 || key == 125)
+		to_down(game);
+	if (key == 2 || key == 124)
+		to_right(game);
+	if (key == 13 || key == 126)
+		to_up(game);
+	return (1);
 }
 
 int	main(int ac, char **av)

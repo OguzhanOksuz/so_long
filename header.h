@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 04:18:34 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 05:26:45 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ typedef struct s_game
 	void	*portal_d_img;
 	void	*brick_img;
 	void	*plank_img;
-	int		player_x;
-	int		player_y;
+	int		player_i;
+	int		player_j;
 	int		res;
 	int		move;
 }	t_game;
@@ -90,10 +90,9 @@ typedef struct s_game
 t_map	*map_init(char *src);
 void	init_images(t_game *game);
 void	map_counter(t_map *rt_map);
-void	render_engine(t_game *game);
-void	put_player(t_game *game, int code, int i, int j);
-void	put_coins(t_game *game, int code, int i, int j);
-void	put_enemy(t_game *game, int code, int i, int j);
+void	try_exit(t_game *game);
+void	to_die(t_game *game);
+void	to_move(t_game *game, int i, int j, int key);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);
