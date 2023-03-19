@@ -6,13 +6,13 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 04:28:11 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 10:53:49 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 11:02:14 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void to_left(t_game *game)
+void	to_left(t_game *game)
 {
 	int	i;
 	int	j;
@@ -21,20 +21,23 @@ void to_left(t_game *game)
 	j = game->player_i;
 	if (j > 0)
 	{
-		if (game->ren_map[i][j - 1] == 'E')
+		if (game->ren_map->map[i][j - 1] == 'E')
 			try_exit(game);
-		if (game->ren_map[i][j - 1] != '1')
+		if (game->ren_map->map[i][j - 1] != '1')
 			game->move++;
-		if (game->ren_map[i][j - 1] == 'X')
+		if (game->ren_map->map[i][j - 1] == 'X')
 			to_die(game);
-		if (game->ren_map[i][j - 1] == '0')
-			to_move(game, i , j, 0);
-		if (game->ren_map[i][j - 1] == 'C')
-			to_colllect(game, i, j, 0);
+		if (game->ren_map->map[i][j - 1] == '0')
+			to_move(game, i, j, 0);
+		if (game->ren_map->map[i][j - 1] == 'C')
+		{
+			game->ren_map->coin--;
+			to_move(game, i, j, 13);
+		}
 	}
 }
 
-void to_down(t_game *game)
+void	to_down(t_game *game)
 {
 	int	i;
 	int	j;
@@ -43,20 +46,23 @@ void to_down(t_game *game)
 	j = game->player_i;
 	if (i < game->ren_map->row_num)
 	{
-		if (game->ren_map[i + 1][j] == 'E')
+		if (game->ren_map->map[i + 1][j] == 'E')
 			try_exit(game);
-		if (game->ren_map[i + 1][j] != '1')
+		if (game->ren_map->map[i + 1][j] != '1')
 			game->move++;
-		if (game->ren_map[i + 1][j] == 'X')
+		if (game->ren_map->map[i + 1][j] == 'X')
 			to_die(game);
-		if (game->ren_map[i + 1][j] == '0')
-			to_move(game, i , j, 1);
-		if (game->ren_map[i + 1][j] == 'C')
-			to_colllect(game, i, j, 0);
+		if (game->ren_map->map[i + 1][j] == '0')
+			to_move(game, i, j, 1);
+		if (game->ren_map->map[i + 1][j] == 'C')
+		{
+			game->ren_map->coin--;
+			to_move(game, i, j, 13);
+		}
 	}
 }
 
-void to_right(t_game *game)
+void	to_right(t_game *game)
 {
 	int	i;
 	int	j;
@@ -65,20 +71,23 @@ void to_right(t_game *game)
 	j = game->player_i;
 	if (j < game->ren_map->row_len)
 	{
-		if (game->ren_map[i][j + 1] == 'E')
+		if (game->ren_map->map[i][j + 1] == 'E')
 			try_exit(game);
-		if (game->ren_map[i][j + 1] != '1')
+		if (game->ren_map->map[i][j + 1] != '1')
 			game->move++;
-		if (game->ren_map[i][j + 1] == 'X')
+		if (game->ren_map->map[i][j + 1] == 'X')
 			to_die(game);
-		if (game->ren_map[i][j + 1] == '0')
-			to_move(game, i , j, 2);
-		if (game->ren_map[i][j + 1] == 'C')
-			to_colllect(game, i, j, 2);
+		if (game->ren_map->map[i][j + 1] == '0')
+			to_move(game, i, j, 2);
+		if (game->ren_map->map[i][j + 1] == 'C')
+		{
+			game->ren_map->coin--;
+			to_move(game, i, j, 13);
+		}
 	}
 }
 
-void to_up(t_game *game)
+void	to_up(t_game *game)
 {
 	int	i;
 	int	j;
@@ -87,18 +96,18 @@ void to_up(t_game *game)
 	j = game->player_i;
 	if (i > 0)
 	{
-		if (game->ren_map[i - 1][j] == 'E')
+		if (game->ren_map->map[i - 1][j] == 'E')
 			try_exit(game);
-		if (game->ren_map[i - 1][j] != '1')
+		if (game->ren_map->map[i - 1][j] != '1')
 			game->move++;
-		if (game->ren_map[i - 1][j] == 'X')
+		if (game->ren_map->map[i - 1][j] == 'X')
 			to_die(game);
-		if (game->ren_map[i - 1][j] == '0')
-			to_move(game, i , j, 13);
-		if (game->ren_map[i - 1][j] == 'C')
+		if (game->ren_map->map[i - 1][j] == '0')
+			to_move(game, i, j, 13);
+		if (game->ren_map->map[i - 1][j] == 'C')
 		{
 			game->ren_map->coin--;
-			to_move(game, i , j, 13);
+			to_move(game, i, j, 13);
 		}
 	}
 }

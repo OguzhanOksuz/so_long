@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:55:05 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 02:12:45 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 11:08:31 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,27 @@ void	map_counter(t_map *rt_map)
 	rt_map->player = player_count(rt_map);
 	exit_count(rt_map);
 	coin_count(rt_map);
+}
+
+void	get_player_cordinates(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->ren_map->map[i])
+	{
+		j = 0;
+		while (game->ren_map->map[i][j])
+		{
+			if (game->ren_map->map[i][j] == 'P')
+			{
+				game->player_i = i;
+				game->player_j = j;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }

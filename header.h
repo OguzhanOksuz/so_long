@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 05:26:45 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 11:05:04 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ void	map_counter(t_map *rt_map);
 void	try_exit(t_game *game);
 void	to_die(t_game *game);
 void	to_move(t_game *game, int i, int j, int key);
+void	to_left(t_game *game);
+void	to_down(t_game *game);
+void	to_right(t_game *game);
+void	to_up(t_game *game);
+void	get_player_cordinates(t_game *game);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);
