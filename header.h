@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 16:53:52 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 17:53:56 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,53 +63,27 @@ typedef struct s_map
 	char	**map;
 }	t_map;
 
-typedef struct s_walls
-{
-	int		*walls;
-	int		*wall_i;
-	int		*wall_j;
-	void	*wall_img;
-}	t_walls;
-
-typedef struct s_floors
-{
-	int		*floors;
-	int		*floor_i;
-	int		*floor_j;
-	void	*floor_img;
-}	t_floors;
-
-typedef struct s_exit
-{
-	int		*coins;
-	int		exmit_i;
-	int		exit_j;
-	void	**exit_imgs;
-}	t_exit;
-
 typedef struct s_coins
 {
-	int		*coins;
-	int		*coin_i;
-	int		*coin_j;
-	int		frame;
+	int	*coins_c;
+	int	**coin_pos;
+	int	frame;
 	void	**coin_imgs;
 }	t_coins;
 
 typedef struct s_enemies
 {
-	int		*enemise;
-	int		*enemy_i;
-	int		*enemy_j;
-	int		frame;
+	int	*enemise;
+	int	*enemy_pos;
+	int	frame;
 	void	**enemy_imgs;
 }	t_enemies;
 
 typedef struct s_player
 {
-	int		player_i;
-	int		player_j;
-	int		frame;
+	int	player_i;
+	int	player_j;
+	int	frame;
 	void	**player_imgs;
 }	t_player;
 
@@ -117,13 +91,11 @@ typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
-	int			move;
-	int			*row_len;
-	int			*row_num;
+	void		*wall_img;
+	void		*floor_img;
+	void		**exit_img;
+	int		move;
 	t_map		*map;
-	t_walls		*walls;
-	t_floors	*floors;
-	t_exit		*exit;
 	t_coins		*coins;
 	t_enemies	*enemies;
 	t_player	*player;
@@ -133,6 +105,7 @@ t_map	*map_init(char *src);
 void	init_images(t_game *game);
 void	map_counter(t_map *rt_map);
 void	is_reachable(t_map *rt_map);
+void	init_structs(t_game *game);
 void	try_exit(t_game *game);
 void	to_die(t_game *game);
 void	to_move(t_game *game, int i, int j, int key);
@@ -156,7 +129,6 @@ int		is_01(char c);
 int		is_file_exist(char *str);
 int		error_code(int code);
 int		char_counter(t_map *map, char c);
-int		is_moveable(t_map *map, int i, int j);
 
 void	print_map(t_map *map);
 

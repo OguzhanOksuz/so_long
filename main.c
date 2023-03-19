@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 15:07:57 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 17:51:49 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int ac, char **av)
 	else
 	{
 		game->map = map_init(av[1]);
+		init_structs(game);
 	//	init_images(game);
 	//	get_player_cordinates(game);
 	//	print_game(game);

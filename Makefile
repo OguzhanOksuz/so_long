@@ -16,6 +16,7 @@ SRCS =	utils.c			\
 	ft_split.c		\
 	is_reachable.c		\
 	init_map.c		\
+	init_structs.c		\
 	map_counter.c		\
 	debugger.c		\
 	main.c
