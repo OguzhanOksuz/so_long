@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:13:20 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 16:54:33 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 17:08:25 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int	is_moveable(t_map *map, int i, int j)
 {
+	int	coin;
+
+	coin = char_counter(map, 'C');
 	if (map->map[i][j] == '0' || map->map[i][j] == 'C')
 		return (1);
 	if (map->map[i][j] == 'X')
 		return (1);
 	if (map->map[i][j] == '1')
 		return (0);
-	if (map->map[i][j] == 'E' && map->coins == 0)
+	if (map->map[i][j] == 'E' && coin == 0) 
 		return (1);
 	return (0);
 }
@@ -66,17 +69,15 @@ void	is_reachable(t_map *rt_map)
 	while (1)
 	{
 		tmp = char_counter(rt_map, 'P');
-		i = 0;
-		while (rt_map->map[i])
+		i = -1;
+		while (rt_map->map[++i])
 		{
-			j = 0;
-			while (rt_map->map[i][j])
+			j = -1;
+			while (rt_map->map[i][++j])
 			{
 				if (rt_map->map[i][j] == 'P')
 					fill_reachable(rt_map, i, j);
-				j++;
 			}
-			i++;
 		}
 		if (tmp == char_counter(rt_map, 'P'))
 			break ;
