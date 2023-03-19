@@ -6,16 +6,26 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:23:35 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:34:34 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	draw_01(t_game *game)
-{
-	
-}
+#include "header.h"
 
 void	render_engine(t_game *game)
 {
-	draw_01(game);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->ren_map->map[i])
+	{
+		j = 0;
+		while (game->ren_map->map[i][j])
+		{
+			mlx_put_image_to_window(game->mlx, game->window, game->plank_img, i * game->res, i * game->res);	
+			j++;
+		}
+		i++;
+	}
 }

@@ -12,6 +12,7 @@ SRCS =	utils.c		\
 	is_reachable.c	\
 	init_map.c	\
 	init_images.c	\
+	render_engine.c	\
 	main.c
 
 all: $(NAME)

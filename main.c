@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:21:11 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:35:05 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int ac, char **av)
 	{
 		game->ren_map = map_init(av[1]);
 		init_images(game);
-		render_enginde(game);
+		render_engine(game);
 	}
 	system("leaks so_long");
 	mlx_loop(game->mlx);
