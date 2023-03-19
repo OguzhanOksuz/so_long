@@ -6,11 +6,39 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:44:37 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:50:12 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	draw_exit(t_game *g)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (g->ren_map->map[i])
+	{
+		j = 0;
+		while (g->ren_map->map[i][j])
+		{
+			if (g->ren_map->map[i][j]== 'E')
+			{
+				if (g->ren_map->coin == 0)
+					mlx_put_image_to_window(g->mlx,
+						g->window, g->portal_a_img,
+						j * g->res, i * g->res);
+				else
+					mlx_put_image_to_window(g->mlx,
+						g->window, g->portal_d_img,
+						j * g->res, i * g->res);
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	render_engine(t_game *game)
 {
@@ -33,8 +61,8 @@ void	render_engine(t_game *game)
 		}
 		i++;
 	}
+	draw_exit(game);
 //	draw_player(game);
 //	draw_coins(game);
 //	draw_enemies(game);
-//	draw_exit(game);
 }
