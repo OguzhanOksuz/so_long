@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:44:03 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:44:37 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	render_engine(t_game *game)
 				game->plank_img, j * game->res, i * game->res);
 			if (game->ren_map->map[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->brick_img, j * game->res, i * game->res);
+					game->brick_img,
+					j * game->res, i * game->res);
 			j++;
 		}
 		i++;
