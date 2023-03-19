@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:54:43 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 04:18:34 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ t_map	*map_init(char *src);
 void	init_images(t_game *game);
 void	map_counter(t_map *rt_map);
 void	render_engine(t_game *game);
+void	put_player(t_game *game, int code, int i, int j);
+void	put_coins(t_game *game, int code, int i, int j);
+void	put_enemy(t_game *game, int code, int i, int j);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 04:08:29 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 04:19:21 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	draw_coins(t_game *game)
 		while (game->ren_map->map[i][j])
 		{
 			if (game->ren_map->map[i][j] == 'C')
-				put_player(game, code, i, j);
+				put_coins(game, code, i, j);
 			j++;
 		}
 		i++;
