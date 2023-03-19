@@ -6,15 +6,14 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 13:48:29 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 13:59:14 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# define W 64
-# define H 64
+# define RES 64
 
 # define BRICK_SRC "textures/envoriment/brick.xpm"
 # define PLANK_SRC "textures/envoriment/plank.xpm"
@@ -60,10 +59,10 @@ typedef struct s_map
 	int		row_len;
 	int		row_num;
 	int		valid;
-	int		player;
-	int		*coin;
+	int		*player;
+	int		*coins;
 	int		exit;
-	int		*enemy;
+	int		*enemies;
 	int		wrong;
 	char	*extension;
 	char	**map;
@@ -85,6 +84,14 @@ typedef struct s_floors
 	void	*floor_img;
 }	t_floors;
 
+tpedef struct s_exit
+{
+	int	*active;
+	int	exit_i;
+	int	exit_j;
+	void	**exit_imgs;
+}	t_exit;
+
 typedef struct s_coins
 {
 	int	*coins;
@@ -94,6 +101,15 @@ typedef struct s_coins
 	void	**coin_imgs;
 }	t_coins;
 
+typedef struct s_enemies
+{
+	int	*enemise;
+	int	*enemy_i;
+	int	*enemy_j;
+	int	frame;
+	void	**enemy_imgs;
+}	t_enemies;
+
 typedef struct s_player
 {
 	int	player_i;
@@ -102,23 +118,18 @@ typedef struct s_player
 	void	**player_imgs;
 }	t_player;
 
-typedef struct	s_
-
-typedef struct s_bricks
-
 typedef struct s_game
 {
-	t_map	*ren_map;
-	void	*mlx;
-	void	*window;
-	void	**enemy_imgs;
-	void	*portal_a_img;
-	void	*portal_d_img;
-	void	*plank_img;
-	int		player_i;
-	int		player_j;
-	int		res;
+	void		*mlx;
+	void		*window;
 	int		move;
+	t_map		*ren_map;
+	t_walls		*walls;
+	t_floors	*floors;
+	t_exit		*exit;
+	t_coins		*coins;
+	t_enemies	*enemies;
+	t_player	*player;
 }	t_game;
 
 t_map	*map_init(char *src);
