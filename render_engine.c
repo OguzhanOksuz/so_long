@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 03:34:34 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/19 03:35:35 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	render_engine(t_game *game)
 		j = 0;
 		while (game->ren_map->map[i][j])
 		{
-			mlx_put_image_to_window(game->mlx, game->window, game->plank_img, i * game->res, i * game->res);	
+			mlx_put_image_to_window(game->mlx, game->window, game->plank_img, i * game->res, j * game->res);
 			j++;
 		}
 		i++;
