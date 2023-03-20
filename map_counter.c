@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 01:55:05 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 16:47:50 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/20 13:35:21 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	map_counter(t_map *map)
 			if (!(map->map[i][j] == '1' || map->map[i][j] == '0' ||
 				map->map[i][j] == 'P' ||
 				map->map[i][j] == 'E' ||
-				map->map[i][j] == 'C' ||
-				map->map[i][j] == 'X'))
+				map->map[i][j] == 'C'))
 				error_code(-3);
 		}
 	}
@@ -58,5 +57,4 @@ void	map_counter(t_map *map)
 	map->coins = char_counter(map, 'C');
 	if (map->coins == 0)
 		error_code(-4);
-	map->enemies = char_counter(map, 'X');
 }

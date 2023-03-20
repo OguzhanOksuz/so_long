@@ -14,7 +14,6 @@ SRCS =	utils.c			\
 	init_images.c		\
 	physics_engine.c	\
 	map_counter.c		\
-	debugger.c		\
 	render_engine.c		\
 	move_map.c		\
 	drawer.c		\

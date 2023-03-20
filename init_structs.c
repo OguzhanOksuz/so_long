@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:17:12 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:38:49 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/20 13:34:24 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,17 @@ void	exit_cordinates(t_map *map, t_game *game)
 void	init_structs(t_game *game)
 {
 	t_coins		*coins;
-	t_enemies	*enemies;
 	t_player	*player;
 
 	coins = (t_coins *)malloc(sizeof(t_coins));
-	enemies = (t_enemies *)malloc(sizeof(t_enemies));
 	player = (t_player *)malloc(sizeof(t_player));
-	if (!coins || !enemies || !player)
+	if (!coins || !player)
 		error_code(-500);
 	coins->coins_c = &game->map->coins;
 	coins->coin_pos = get_poses(game->map, 'C');
-	enemies->enemies_c = &game->map->enemies;
-	enemies->enemy_pos = get_poses(game->map, 'X');
 	player_cordinates(game->map, player);
 	game->m = game->map->map;
 	game->coins = coins;
-	game->enemies = enemies;
 	game->player = player;
 	game->move = 0;
 	game->coin = &game->map->coins;

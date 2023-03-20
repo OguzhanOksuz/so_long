@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 03:21:26 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:27:15 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/20 15:41:13 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	render_cordinate(t_game *game, int i, int j)
 {
 	draw_floor(game, i, j);
-	if (game->map->map[i][j]  == '1')
+	if (game->map->map[i][j] == '1')
 		draw_wall(game, i, j);
-	if (game->map->map[i][j]  == 'E')
+	if (game->map->map[i][j] == 'E')
 		draw_exit(game, i, j);
-	if (game->map->map[i][j]  == 'P')
+	if (game->map->map[i][j] == 'P')
 		draw_player(game, i, j);
-	if (game->map->map[i][j]  == 'C')
+	if (game->map->map[i][j] == 'C')
 		draw_coin(game, i, j);
 }
 

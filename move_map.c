@@ -6,32 +6,36 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:13:48 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:31:35 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/20 15:43:18 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	move_count(t_game *game, int key)
+{
+	if (key == 0 || key == 1 || key == 2 || key == 13)
+	{
+		write(1, "Move = ", 7);
+		ft_putnbr(game->move);
+		write(1, "\n", 1);
+	}
+}
 
 void	try_exit(t_game *game)
 {
 	if (*game->coin == 0)
 	{
 		game->move++;
-		write(1, "YOU WON\n", 8);
+		move_count(game, 0);
 		exit(1);
 	}
-}
-
-void	to_die(t_game *game)
-{
-	game->move++;
-	error_code(-101010);
 }
 
 void	to_collect(t_coins *c, int i, int j)
 {
 	int	num;
-	int 	*tmp;
+	int	*tmp;
 
 	num = 0;
 	while (num < *c->coins_c)
@@ -73,4 +77,5 @@ void	to_move(t_game *game, int i, int j, int key)
 		game->map->map[i - 1][j] = 'P';
 		*game->player_i -= 1;
 	}
+	move_count(game, key);
 }
