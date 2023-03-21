@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 23:38:33 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/22 00:53:12 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,61 @@
 
 # define RES 64
 
-# define BRICK_SRC "textures/envoriment/brick.xpm"
-# define PLANK_SRC "textures/envoriment/plank.xpm"
-# define PA_SRC "textures/portal/pa.xpm"
-# define PDA_SRC "textures/portal/pda.xpm"
-# define S0_SRC "textures/steve/s0.xpm"
-# define S1_SRC "textures/steve/s1.xpm"
-# define S2_SRC "textures/steve/s2.xpm"
-# define S3_SRC "textures/steve/s3.xpm"
-# define S4_SRC "textures/steve/s4.xpm"
-# define S5_SRC "textures/steve/s5.xpm"
-# define S6_SRC "textures/steve/s6.xpm"
-# define S7_SRC "textures/steve/s7.xpm"
-# define S8_SRC "textures/steve/s8.xpm"
-# define S9_SRC "textures/steve/s9.xpm"
-# define S10_SRC "textures/steve/s10.xpm"
-# define S11_SRC "textures/steve/s11.xpm"
-# define E0_SRC "textures/dragon/e0.xpm"
-# define E1_SRC "textures/dragon/e1.xpm"
-# define E2_SRC "textures/dragon/e2.xpm"
-# define E3_SRC "textures/dragon/e3.xpm"
-# define E4_SRC "textures/dragon/e4.xpm"
-# define E5_SRC "textures/dragon/e5.xpm"
-# define E6_SRC "textures/dragon/e6.xpm"
-# define D0_SRC "textures/diamond/d0.xpm"
-# define D1_SRC "textures/diamond/d1.xpm"
-# define D2_SRC "textures/diamond/d2.xpm"
-# define D3_SRC "textures/diamond/d3.xpm"
-# define D4_SRC "textures/diamond/d4.xpm"
-# define D5_SRC "textures/diamond/d5.xpm"
-# define D6_SRC "textures/diamond/d6.xpm"
-# define D7_SRC "textures/diamond/d7.xpm"
-# define D8_SRC "textures/diamond/d8.xpm"
+# define W_SRC "textures/W.xpm"
+# define F_SRC "textures/F.xpm"
+# define EA_SRC "textures/EA.xpm"
+# define EDA_SRC "textures/EDA.xpm"
+# define P0_SRC "textures/P0.xpm"
+# define P1_SRC "textures/P1.xpm"
+# define P2_SRC "textures/P2.xpm"
+# define P3_SRC "textures/P3.xpm"
+# define P4_SRC "textures/P4.xpm"
+# define P5_SRC "textures/P5.xpm"
+# define P6_SRC "textures/P6.xpm"
+# define P7_SRC "textures/P7.xpm"
+# define P8_SRC "textures/P8.xpm"
+# define P9_SRC "textures/P9.xpm"
+# define P10_SRC "textures/P10.xpm"
+# define P11_SRC "textures/P11.xpm"
+# define P12_SRC "textures/P12.xpm"
+# define P13_SRC "textures/P13.xpm"
+# define P14_SRC "textures/P14.xpm"
+# define P15_SRC "textures/P15.xpm"
+# define C0_SRC "textures/C0.xpm"
+# define C1_SRC "textures/C1.xpm"
+# define C2_SRC "textures/C2.xpm"
+# define C3_SRC "textures/C3.xpm"
+# define C4_SRC "textures/C4.xpm"
+# define C5_SRC "textures/C5.xpm"
+# define C6_SRC "textures/C6.xpm"
+# define C7_SRC "textures/C7.xpm"
+# define C8_SRC "textures/C8.xpm"
+# define C9_SRC "textures/C9.xpm"
+# define C10_SRC "textures/C10.xpm"
+# define C11_SRC "textures/C11.xpm"
+# define E0_SRC "texture/E0.xpm"
+# define E1_SRC "texture/E1.xpm"
+# define E2_SRC "texture/E2.xpm"
+# define E3_SRC "texture/E3.xpm"
+# define E4_SRC "texture/E4.xpm"
+# define E5_SRC "texture/E5.xpm"
+# define E6_SRC "texture/E6.xpm"
+# define E7_SRC "texture/E7.xpm"
+# define E8_SRC "texture/E8.xpm"
+# define E9_SRC "texture/E9.xpm"
+# define E10_SRC "texture/E10.xpm"
+# define E11_SRC "texture/E11.xpm"
+# define E12_SRC "texture/E12.xpm"
+# define E13_SRC "texture/E13.xpm"
+# define E14_SRC "texture/E14.xpm"
+# define E15_SRC "texture/E15.xpm"
+
 
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include "./mlx/mlx.h"
-# include <stdio.h>
+# include <sys/time.h>
 
 typedef struct s_map
 {
@@ -94,6 +111,7 @@ typedef struct s_game
 	void		*wall_img;
 	void		*floor_img;
 	void		**exit_imgs;
+	int			time;
 	int			move;
 	int			res;
 	int			*coin;
@@ -134,6 +152,7 @@ void	draw_coin(t_game *g, int i, int j);
 void	render_map(t_game *game);
 void	render_move(t_game *game, int key);
 void	render_cordinate(t_game *game, int i, int j);
+void	animation_engine(t_game *game);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

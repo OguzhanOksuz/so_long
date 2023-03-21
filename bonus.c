@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 21:04:47 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/22 00:52:23 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,29 @@ int	physics_engine(int key, t_game *game)
 	return (1);
 }
 
+long long	millitimestamp(void)
+{
+	struct timeval	timeval;
+	long long		microtime;
+
+	gettimeofday(&timeval, NULL);
+	microtime = timeval.tv_sec * 1000LL + timeval.tv_usec / 1000;
+	return (microtime);
+}
+
+int	loop_engine(t_game *game)
+{
+	long long int	now;
+
+	now = millitimestamp();
+	if (now - game->time > 50)
+	{
+		animation_engine(game);
+		game->time = now;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -68,13 +91,13 @@ int	main(int ac, char **av)
 	else
 	{
 		game->map = map_init(av[1]);
-		if (game->map->enemies != 0)
-			error_code(-3);
 		init_structs(game);
 		init_images(game);
 		render_map(game);
+		game->time = millitimestamp();
 		mlx_hook(game->window, 2, 0, physics_engine, game);
 		mlx_hook(game->window, 17, 0, error_code, NULL);
+		mlx_loop_hook(game->mlx, loop_engine, game);
 		mlx_loop(game->mlx);
 	}
 	return (0);

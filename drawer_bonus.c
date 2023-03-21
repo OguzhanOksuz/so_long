@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 23:14:35 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 21:05:04 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/22 00:05:57 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,4 @@ void	draw_wall(t_game *g, int i, int j)
 {
 	mlx_put_image_to_window(g->mlx, g->window,
 		g->wall_img, j * RES, i * RES);
-}
-
-
-void	draw_coin(t_game *g, int i, int j)
-{
-	mlx_put_image_to_window(g->mlx, g->window,
-		g->coins->coin_imgs[0], j * RES, i * RES);
-}
-
-void	draw_player(t_game *g, int i, int j)
-{
-	mlx_put_image_to_window(g->mlx, g->window,
-		g->player->player_imgs[0], j * RES, i * RES);
 }

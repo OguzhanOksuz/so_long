@@ -7,19 +7,20 @@ LDFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit
 FRAEMWORKS=-framework OpenGL -framework AppKit
 ARCS = ./mlx/libmlx.a
 
-BSRCS = bonus.c			\
-	utils.c			\
-	utils_bonus.c		\
-	is_reachable.c		\
+BSRCS =	utils.c			\
 	init_map.c		\
-	physics_engine_bonus.c	\
-	init_structs_bonus.c	\
-	drawer_bonus.c		\
 	ft_split.c		\
-	init_images_bonus.c	\
+	is_reachable.c		\
 	map_counter_bonus.c	\
+	init_images_bonus.c	\
+	init_structs_bonus.c	\
 	render_engine_bonus.c	\
-	move_map.c
+	drawer_bonus.c		\
+	physics_engine_bonus.c	\
+	move_map.c		\
+	utils_bonus.c		\
+	animation_engine.c	\
+	bonus.c
 
 SRCS =	utils.c			\
 	ft_split.c		\
@@ -36,14 +37,11 @@ SRCS =	utils.c			\
 
 all: $(NAME)
 
-bonus: $(BNAME)
+bonus:
+	$(CC) $(CFLAGS) $(BSRCS) $(FRAEMWORKS) $(ARCS) -o $(BNAME)
 
 $(NAME):
 	$(CC) $(CFLAGS) $(SRCS) $(FRAEMWORKS) $(ARCS) -o $(NAME)
-
-$(BNAME):
-	$(CC) $(CFLAGS) $(BSRCS) $(FRAEMWORKS) $(ARCS) -o $(NAME)
-
 
 $(ARCS):
 	@make -C mlx/ all
@@ -52,10 +50,11 @@ clean:
 
 fclean:
 	rm -rf $(NAME)
+	rm -rf $(BNAME)
 
 
 re: fclean all
 
-bre: fclean bname
+bre: fclean bonus
 
 .PHONY: all clean fclean re
