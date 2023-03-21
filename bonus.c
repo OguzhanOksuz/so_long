@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 22:17:10 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/21 21:04:47 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "bonus.h"
 
 int	error_code(int code)
 {
@@ -30,32 +30,13 @@ int	error_code(int code)
 		write(2, "Error invalid arguman count\n", 29);
 	else if (code == -404)
 		write(2, "Error file did not found\n", 26);
+	else if (code == -101010)
+		write(2, "You Dieded\n", 11);
 	else if (code == -500)
 		write(2, "Error Malloc\n", 14);
 	else
 		write(1, "Exit Game\n", 10);
 	exit(1);
-}
-
-void	ft_putnbr(int nb)
-{
-	char	c;
-
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nb = -nb;
-	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		nb = nb % 10;
-	}
-	if (nb < 10)
-	{
-		c = (nb + 48);
-		write(1, &c, 1);
-	}
 }
 
 int	physics_engine(int key, t_game *game)
@@ -71,14 +52,8 @@ int	physics_engine(int key, t_game *game)
 	if (key == 53)
 		error_code(1);
 	render_move(game, key);
+	render_cordinate(game, game->exit_i, game->exit_j);
 	return (1);
-}
-
-void	move_count(t_game *game)
-{
-	write(1, "move = ", 7);
-	ft_putnbr(game->move);
-	write(1, "\n", 1);
 }
 
 int	main(int ac, char **av)
@@ -93,6 +68,8 @@ int	main(int ac, char **av)
 	else
 	{
 		game->map = map_init(av[1]);
+		if (game->map->enemies != 0)
+			error_code(-3);
 		init_structs(game);
 		init_images(game);
 		render_map(game);
