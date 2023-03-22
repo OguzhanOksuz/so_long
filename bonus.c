@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 01:25:02 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:45:21 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	physics_engine(int key, t_game *game)
 		to_up(game);
 	if (key == 53)
 		error_code(1);
-	render_move(game, key);
 	return (1);
 }
 

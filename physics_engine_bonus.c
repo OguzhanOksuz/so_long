@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 04:28:11 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 20:44:59 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:47:59 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	to_left(t_game *game)
 			to_collect(game->coins, i, j - 1);
 			to_move(game, i, j, 0);
 			render_cordinate(game, game->exit_i, game->exit_j);
-			draw_floor(game, i, j - 1);
 		}
 	}
 }
@@ -61,7 +60,6 @@ void	to_down(t_game *game)
 			to_collect(game->coins, i + 1, j);
 			to_move(game, i, j, 1);
 			render_cordinate(game, game->exit_i, game->exit_j);
-			draw_floor(game, i + 1, j);
 		}
 	}
 }
@@ -88,7 +86,6 @@ void	to_right(t_game *game)
 			to_collect(game->coins, i, j  + 1);
 			to_move(game, i, j, 2);
 			render_cordinate(game, game->exit_i, game->exit_j);
-			draw_floor(game, i, j + 1);
 		}
 	}
 }
@@ -115,7 +112,6 @@ void	to_up(t_game *game)
 			to_collect(game->coins, i - 1, j);
 			to_move(game, i, j, 13);
 			render_cordinate(game, game->exit_i, game->exit_j);
-			draw_floor(game, i - 1, j);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:13:48 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 01:09:18 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:45:05 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void	to_move(t_game *game, int i, int j, int key)
 		game->map->map[i - 1][j] = 'P';
 		*game->player_i -= 1;
 	}
+	render_move(game, key);
 	game->move += 1;
 }
