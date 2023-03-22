@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 00:53:12 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:08:05 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,22 @@
 # define C9_SRC "textures/C9.xpm"
 # define C10_SRC "textures/C10.xpm"
 # define C11_SRC "textures/C11.xpm"
-# define E0_SRC "texture/E0.xpm"
-# define E1_SRC "texture/E1.xpm"
-# define E2_SRC "texture/E2.xpm"
-# define E3_SRC "texture/E3.xpm"
-# define E4_SRC "texture/E4.xpm"
-# define E5_SRC "texture/E5.xpm"
-# define E6_SRC "texture/E6.xpm"
-# define E7_SRC "texture/E7.xpm"
-# define E8_SRC "texture/E8.xpm"
-# define E9_SRC "texture/E9.xpm"
-# define E10_SRC "texture/E10.xpm"
-# define E11_SRC "texture/E11.xpm"
-# define E12_SRC "texture/E12.xpm"
-# define E13_SRC "texture/E13.xpm"
-# define E14_SRC "texture/E14.xpm"
-# define E15_SRC "texture/E15.xpm"
+# define E0_SRC "textures/E0.xpm"
+# define E1_SRC "textures/E1.xpm"
+# define E2_SRC "textures/E2.xpm"
+# define E3_SRC "textures/E3.xpm"
+# define E4_SRC "textures/E4.xpm"
+# define E5_SRC "textures/E5.xpm"
+# define E6_SRC "textures/E6.xpm"
+# define E7_SRC "textures/E7.xpm"
+# define E8_SRC "textures/E8.xpm"
+# define E9_SRC "textures/E9.xpm"
+# define E10_SRC "textures/E10.xpm"
+# define E11_SRC "textures/E11.xpm"
+# define E12_SRC "textures/E12.xpm"
+# define E13_SRC "textures/E13.xpm"
+# define E14_SRC "textures/E14.xpm"
+# define E15_SRC "textures/E15.xpm"
 
 
 # include <unistd.h>
@@ -92,6 +92,7 @@ typedef struct s_enemies
 {
 	int		*enemies_c;
 	int		**enemy_pos;
+	int		**way;
 	int		frame;
 	void	**enemy_imgs;
 }	t_enemies;
@@ -111,7 +112,7 @@ typedef struct s_game
 	void		*wall_img;
 	void		*floor_img;
 	void		**exit_imgs;
-	int			time;
+	long long int		time;
 	int			move;
 	int			res;
 	int			*coin;
@@ -153,6 +154,11 @@ void	render_map(t_game *game);
 void	render_move(t_game *game, int key);
 void	render_cordinate(t_game *game, int i, int j);
 void	animation_engine(t_game *game);
+void	animate_player(t_game *g, t_player *p);
+void	animate_enemies(t_game *g, t_enemies *e);
+void	animate_enemy(t_game *g, t_enemies *e, int p);
+void	patrol_enemies(t_game *g);
+void	to_die(t_game *game);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

@@ -6,11 +6,12 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 00:52:23 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:25:02 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
+#include <stdio.h>
 
 int	error_code(int code)
 {
@@ -52,7 +53,6 @@ int	physics_engine(int key, t_game *game)
 	if (key == 53)
 		error_code(1);
 	render_move(game, key);
-	render_cordinate(game, game->exit_i, game->exit_j);
 	return (1);
 }
 
@@ -68,13 +68,14 @@ long long	millitimestamp(void)
 
 int	loop_engine(t_game *game)
 {
-	long long int	now;
+	long long int	time;
 
-	now = millitimestamp();
-	if (now - game->time > 50)
+	time = millitimestamp();
+	if (time - game->time > 150)
 	{
 		animation_engine(game);
-		game->time = now;
+		patrol_enemies(game);
+		game->time = time;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:54:27 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 00:04:14 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/22 23:09:40 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	render_cordinate(t_game *game, int i, int j)
 
 void	render_move(t_game *game, int code)
 {
-	render_cordinate(game, *game->player_i, *game->player_j);
+	animate_player(game, game->player);
 	if (code == 0)
 		render_cordinate(game, *game->player_i, *game->player_j + 1);
 	if (code == 1)

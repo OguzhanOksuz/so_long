@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:17:12 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 21:09:17 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 00:52:43 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	**create_matris(int i, int j)
 {
 	int	**rt;
 	int	a;
+	int	k;
 
 	rt = (int **)malloc(sizeof(int *) * i);
 	if (!rt)
@@ -26,6 +27,9 @@ int	**create_matris(int i, int j)
 		rt[a] = (int *)malloc(sizeof(int) * j);
 		if (!rt[a])
 			error_code(-500);
+		k = 0;
+		while (k < j)
+			rt[a][k++] = 0;
 		a++;
 	}
 	return (rt);
@@ -112,6 +116,7 @@ void	init_structs(t_game *game)
 	coins->coin_pos = get_poses(game->map, 'C');
 	enemies->enemies_c = &game->map->enemies;
 	enemies->enemy_pos = get_poses(game->map, 'X');
+	enemies->way = create_matris(*enemies->enemies_c, 1);
 	player_cordinates(game->map, player);
 	game->m = game->map->map;
 	game->coins = coins;

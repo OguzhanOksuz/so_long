@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_map.c                                         :+:      :+:    :+:   */
+/*   move_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:13:48 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 20:40:14 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:09:18 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "bonus.h"
 
 void	try_exit(t_game *game)
 {
 	if (*game->coin == 0)
 	{
-		game->move++;
-		move_count(game);
+		game->move += 1;
 		exit(1);
 	}
 }
@@ -39,6 +38,12 @@ void	to_collect(t_coins *c, int i, int j)
 		num++;
 	}
 	*c->coins_c -= 1;
+}
+
+void	to_die(t_game *game)
+{
+	(void)game;
+	error_code(-101010);
 }
 
 void	to_move(t_game *game, int i, int j, int key)
@@ -67,5 +72,5 @@ void	to_move(t_game *game, int i, int j, int key)
 		game->map->map[i - 1][j] = 'P';
 		*game->player_i -= 1;
 	}
-	move_count(game);
+	game->move += 1;
 }

@@ -17,9 +17,9 @@ BSRCS =	utils.c			\
 	render_engine_bonus.c	\
 	drawer_bonus.c		\
 	physics_engine_bonus.c	\
-	move_map.c		\
-	utils_bonus.c		\
+	move_map_bonus.c	\
 	animation_engine.c	\
+	patrol_engine.c		\
 	bonus.c
 
 SRCS =	utils.c			\
