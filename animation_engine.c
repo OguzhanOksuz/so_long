@@ -6,12 +6,11 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 00:04:29 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 01:10:31 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 21:39:01 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
-#include <stdio.h>
 
 void	animate_player(t_game *g, t_player *p)
 {
@@ -31,7 +30,7 @@ void	animate_coins(t_game *g, t_coins *c)
 	{
 		draw_floor(g, c->coin_pos[i][0], c->coin_pos[i][1]);
 		mlx_put_image_to_window(g->mlx, g->window,
-				c->coin_imgs[c->frame], c->coin_pos[i][1] * RES,
+			c->coin_imgs[c->frame], c->coin_pos[i][1] * RES,
 			c->coin_pos[i][0] * RES);
 		i++;
 	}
