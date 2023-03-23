@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 01:08:05 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 20:22:19 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);
 char	*ft_read(int fd);
+char	*ft_itoa(int num);
 int		ft_strlen(const char *str);
 int		ft_strrchr(char *str, int c);
 int		ft_strcmp(char *s1, char *s2);
