@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 20:28:45 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 20:37:03 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ int	loop_engine(t_game *game)
 		game->time = time;
 	}
 	render_cordinate(game, 0, 0);
-	mlx_string_put(game->mlx, game->window, 16, 16, 500 + game->move * 50,
+	render_cordinate(game, 0, 1);
+	mlx_string_put(game->mlx, game->window, 0, 16, 500 + game->move * 50,
+		"Move : ");
+	mlx_string_put(game->mlx, game->window, 40, 16, 500 + game->move * 50,
 		ft_itoa(game->move));
 	return (1);
 }
