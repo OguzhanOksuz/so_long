@@ -6,12 +6,12 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 20:22:19 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:45:23 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#ifndef BONUS_H
+# define BONUS_H
 
 # define RES 64
 
@@ -64,7 +64,6 @@
 # define E14_SRC "textures/E14.xpm"
 # define E15_SRC "textures/E15.xpm"
 
-
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -112,7 +111,7 @@ typedef struct s_game
 	void		*wall_img;
 	void		*floor_img;
 	void		**exit_imgs;
-	long long int		time;
+	long long	time;
 	int			move;
 	int			res;
 	int			*coin;
@@ -120,6 +119,8 @@ typedef struct s_game
 	int			*player_j;
 	int			exit_i;
 	int			exit_j;
+	int			color;
+	int			delta;
 	char		**m;
 	t_map		*map;
 	t_coins		*coins;
@@ -171,7 +172,5 @@ int		is_01(char c);
 int		is_file_exist(char *str);
 int		error_code(int code);
 int		char_counter(t_map *map, char c);
-
-void	print_game(t_game *game);
 
 #endif

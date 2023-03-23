@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 20:37:03 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:43:21 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,15 @@ int	loop_engine(t_game *game)
 	}
 	render_cordinate(game, 0, 0);
 	render_cordinate(game, 0, 1);
-	mlx_string_put(game->mlx, game->window, 0, 16, 500 + game->move * 50,
+	mlx_string_put(game->mlx, game->window, 0, 16, game->color << 16,
 		"Move : ");
-	mlx_string_put(game->mlx, game->window, 40, 16, 500 + game->move * 50,
+	mlx_string_put(game->mlx, game->window, 45, 16, game->color << 16,
 		ft_itoa(game->move));
+	game->color += game->delta;
+	if (game->color == 255)
+		game->delta = -1;
+	if (game->color == 0)
+		game->delta = 1;
 	return (1);
 }
 
@@ -100,6 +105,8 @@ int	main(int ac, char **av)
 		init_images(game);
 		render_map(game);
 		game->time = millitimestamp();
+		game->color = 0;
+		game->delta = 1;
 		mlx_hook(game->window, 2, 0, physics_engine, game);
 		mlx_hook(game->window, 17, 0, error_code, NULL);
 		mlx_loop_hook(game->mlx, loop_engine, game);

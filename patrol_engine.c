@@ -6,60 +6,51 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:34:11 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 21:41:24 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/23 22:45:29 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-void	patrol_to_left(t_game *g, t_enemies *e, int p)
+void	check_patrol(t_game *g, t_enemies *e, int p)
 {
-	g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = '0';
-	draw_floor(g, e->enemy_pos[p][0], e->enemy_pos[p][1]);
-	e->enemy_pos[p][1] -= 1;
-	if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1]] == 'P')
-		error_code(-101010);
-	g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = 'X';
-	if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] - 1] == 'P')
-		error_code(-101010);
-	else if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] - 1] == 'X')
-		e->way[p][0] *= -1;
-	else if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] - 1] != '0')
-		e->way[p][0] = 0;
-	animate_enemy(g, e, p);
-}
-
-void	patrol_to_right(t_game *g, t_enemies *e, int p)
-{
-	g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = '0';
-	draw_floor(g, e->enemy_pos[p][0], e->enemy_pos[p][1]);
-	e->enemy_pos[p][1] += 1;
-	if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1]] == 'P')
-		error_code(-101010);
-	g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = 'X';
-	if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] + 1] == 'P')
-		error_code(-101010);
-	else if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] + 1] == 'X')
-		e->way[p][0] *= -1;
-	else if (g->map->map[e->enemy_pos[p][0]]
-		[e->enemy_pos[p][1] + 1] != '0')
-		e->way[p][0] = 0;
-	animate_enemy(g, e, p);
+	if (e->way[p][0] == -1)
+	{
+		if (g->map->map[e->enemy_pos[p][0]]
+			[e->enemy_pos[p][1] - 1] == 'P')
+			error_code(-101010);
+		else if (g->map->map[e->enemy_pos[p][0]]
+			[e->enemy_pos[p][1] - 1] != '0')
+			e->way[p][0] = 0;
+	}
+	else if (e->way[p][0] == 1)
+	{
+		if (g->map->map[e->enemy_pos[p][0]]
+			[e->enemy_pos[p][1] + 1] == 'P')
+			error_code(-101010);
+		else if (g->map->map[e->enemy_pos[p][0]]
+			[e->enemy_pos[p][1] + 1] != '0')
+			e->way[p][0] = 0;
+	}
 }
 
 void	patrol_enemy(t_game *g, t_enemies *e, int p)
 {
 	if (e->way[p][0] == -1)
-		patrol_to_left(g, e, p);
+	{
+		g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = '0';
+		draw_floor(g, e->enemy_pos[p][0], e->enemy_pos[p][1]);
+		e->enemy_pos[p][1] -= 1;
+		g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = 'X';
+	}
 	else if (e->way[p][0] == 1)
-		patrol_to_right(g, e, p);
+	{
+		g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = '0';
+		draw_floor(g, e->enemy_pos[p][0], e->enemy_pos[p][1]);
+		e->enemy_pos[p][1] += 1;
+		g->map->map[e->enemy_pos[p][0]][e->enemy_pos[p][1]] = 'X';
+	}
+	animate_enemy(g, e, p);
 }
 
 void	patrol_enemies(t_game *g)
@@ -80,6 +71,7 @@ void	patrol_enemies(t_game *g)
 			else if (g->map->map[tmpi][tmpj + 1] == '0')
 				g->enemies->way[i][0] = 1;
 		}
+		check_patrol(g, g->enemies, i);
 		patrol_enemy(g, g->enemies, i);
 		i++;
 	}
