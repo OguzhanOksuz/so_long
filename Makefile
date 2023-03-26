@@ -35,26 +35,25 @@ SRCS =	utils.c			\
 	drawer.c		\
 	main.c
 
-all: $(NAME)
+all: $(NAME) bonus
 
-bonus:
+bonus: $(ARCS)
 	$(CC) $(CFLAGS) $(BSRCS) $(FRAEMWORKS) $(ARCS) -o $(BNAME)
 
-$(NAME):
+$(NAME): $(ARCS)
 	$(CC) $(CFLAGS) $(SRCS) $(FRAEMWORKS) $(ARCS) -o $(NAME)
 
 $(ARCS):
 	@make -C mlx/ all
 
 clean:
+	rm -rf $(ARCS)
 
-fclean:
+fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(BNAME)
 
 
 re: fclean all
-
-bre: fclean bonus
 
 .PHONY: all clean fclean re
