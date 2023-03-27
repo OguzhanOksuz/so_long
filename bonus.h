@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:57:37 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/24 00:45:23 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/27 21:05:09 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,8 @@ void	animate_enemies(t_game *g, t_enemies *e);
 void	animate_enemy(t_game *g, t_enemies *e, int p);
 void	patrol_enemies(t_game *g);
 void	to_die(t_game *game);
+void	hud_render(t_game *game);
+void	move_count(t_game *game);
 char	**ft_split(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_trim(char *rd);

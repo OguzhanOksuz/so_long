@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 23:13:20 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 20:42:22 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/27 16:32:50 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_moveable(t_map *map, int i, int j)
 	int	coin;
 
 	coin = char_counter(map, 'C');
-	if (map->map[i][j] == '0' || map->map[i][j] == 'C')
+	if (map->map[i][j] == '0' || map->map[i][j] == 'C' || map->map[i][j] == 'X')
 		return (1);
 	if (map->map[i][j] == 'E' && coin == 0)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/24 00:43:21 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/27 21:06:32 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ long long	millitimestamp(void)
 	long long		microtime;
 
 	gettimeofday(&timeval, NULL);
-	microtime = timeval.tv_sec * 1000LL + timeval.tv_usec / 1000;
+	microtime = timeval.tv_sec * 1000 + timeval.tv_usec / 1000;
 	return (microtime);
 }
 
@@ -75,17 +75,7 @@ int	loop_engine(t_game *game)
 		patrol_enemies(game);
 		game->time = time;
 	}
-	render_cordinate(game, 0, 0);
-	render_cordinate(game, 0, 1);
-	mlx_string_put(game->mlx, game->window, 0, 16, game->color << 16,
-		"Move : ");
-	mlx_string_put(game->mlx, game->window, 45, 16, game->color << 16,
-		ft_itoa(game->move));
-	game->color += game->delta;
-	if (game->color == 255)
-		game->delta = -1;
-	if (game->color == 0)
-		game->delta = 1;
+	hud_render(game);
 	return (1);
 }
 

@@ -20,6 +20,8 @@ BSRCS =	utils.c			\
 	move_map_bonus.c	\
 	animation_engine.c	\
 	patrol_engine.c		\
+	hud_render.c		\
+	ft_itoa.c			\
 	bonus.c
 
 SRCS =	utils.c			\
@@ -33,6 +35,8 @@ SRCS =	utils.c			\
 	render_engine.c		\
 	move_map.c		\
 	drawer.c		\
+	hud_render.c	\
+	ft_itoa.c		\
 	main.c
 
 all: $(NAME) bonus

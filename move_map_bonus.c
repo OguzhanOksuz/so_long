@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:13:48 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/23 21:21:36 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/27 21:07:50 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	try_exit(t_game *game)
 	if (*game->coin == 0)
 	{
 		game->move++;
+		move_count(game);
 		exit(1);
 	}
 }

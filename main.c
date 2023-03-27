@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 00:43:55 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/21 22:17:10 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/27 20:45:37 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,6 @@ int	error_code(int code)
 	exit(1);
 }
 
-void	ft_putnbr(int nb)
-{
-	char	c;
-
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		nb = -nb;
-	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		nb = nb % 10;
-	}
-	if (nb < 10)
-	{
-		c = (nb + 48);
-		write(1, &c, 1);
-	}
-}
-
 int	physics_engine(int key, t_game *game)
 {
 	if (key == 0)
@@ -72,13 +51,6 @@ int	physics_engine(int key, t_game *game)
 		error_code(1);
 	render_move(game, key);
 	return (1);
-}
-
-void	move_count(t_game *game)
-{
-	write(1, "move = ", 7);
-	ft_putnbr(game->move);
-	write(1, "\n", 1);
 }
 
 int	main(int ac, char **av)
