@@ -39,9 +39,11 @@ SRCS =	utils.c			\
 	ft_itoa.c		\
 	main.c
 
-all: $(NAME) bonus
+all: $(NAME)
 
-bonus: $(ARCS)
+bonus: $(BNAME)
+
+$(BNAME): $(ARCS)
 	$(CC) $(CFLAGS) $(BSRCS) $(FRAEMWORKS) $(ARCS) -o $(BNAME)
 
 $(NAME): $(ARCS)
