@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:31:28 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/27 20:46:43 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/28 18:43:08 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr(int nb)
 	if (nb < 0)
 	{
 		write(1, "-", 1);
-		nb = -nb;
+		nb *= -1;
 	}
 	if (nb >= 10)
 	{
@@ -33,10 +33,10 @@ void	ft_putnbr(int nb)
 	}
 }
 
-void	move_count(t_game *game)
+void	move_count(int num)
 {
 	write(1, "move = ", 7);
-	ft_putnbr(game->move);
+	ft_putnbr(num);
 	write(1, "\n", 1);
 }
 

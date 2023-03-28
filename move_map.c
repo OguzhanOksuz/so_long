@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 10:13:48 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/22 20:40:14 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/28 18:39:41 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	try_exit(t_game *game)
 	if (*game->coin == 0)
 	{
 		game->move++;
-		move_count(game);
+		move_count(game->move);
+		write(1, "You Won!\n", 8);
 		exit(1);
 	}
 }
@@ -67,5 +68,5 @@ void	to_move(t_game *game, int i, int j, int key)
 		game->map->map[i - 1][j] = 'P';
 		*game->player_i -= 1;
 	}
-	move_count(game);
+	move_count(game->move);
 }

@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/19 18:59:55 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/28 06:24:04 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void	map_reader(t_map *rt_map, char *src, int flag)
 	if (fd < 0)
 		error_code(-404);
 	rd = ft_read(fd);
-	if (!rd)
-		error_code(-500);
+	close(fd);
 	i = 0;
 	if (flag == 1)
 	{

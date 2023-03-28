@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:54:27 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/27 21:07:09 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/28 18:35:40 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	render_move(t_game *game, int code)
 	if (code == 13)
 		render_cordinate(game, *game->player_i + 1, *game->player_j);
 	game->move++;
-	move_count(game);
+	move_count(game->move);
 }
 
 void	render_map(t_game *game)
