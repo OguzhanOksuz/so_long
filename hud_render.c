@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:31:28 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/28 18:43:08 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/29 01:49:43 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,24 @@ void	move_count(int num)
 
 void	render_move_count(t_game *game)
 {
+	char	*move;
+
+	move = ft_itoa(game->move);
 	mlx_string_put(game->mlx, game->window, 0, 16, game->color << 16,
 		"Move = ");
-	mlx_string_put(game->mlx, game->window, 50, 16, game->color << 16,
-		ft_itoa(game->move));
+	mlx_string_put(game->mlx, game->window, 50, 16, game->color << 16, move);
+	free (move);
 }	
 
 void	render_coin_count(t_game *game)
 {
+	char	*move;
+
+	move = ft_itoa(game->move);
 	mlx_string_put(game->mlx, game->window, 0, 30, game->color << 16,
 		"Coin = ");
-	mlx_string_put(game->mlx, game->window, 50, 30, game->color << 16,
-		ft_itoa(*game->coin));
+	mlx_string_put(game->mlx, game->window, 50, 30, game->color << 16, move);
+	free (move);
 }
 
 void	hud_render(t_game *game)
