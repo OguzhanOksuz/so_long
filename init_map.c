@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 22:03:46 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/28 06:24:04 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/29 03:33:11 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,10 @@ void	map_reader(t_map *rt_map, char *src, int flag)
 	free(rd);
 }
 
-t_map	*map_init(char *src)
+void	is_map_size_valid(t_map *rt_map)
 {
-	t_map	*rt_map;
 	int		i;
 
-	rt_map = (t_map *)malloc(sizeof(t_map));
-	if (!rt_map)
-		error_code(-500);
-	if (ft_strcmp(src + ft_strrchr(src, '.') + 1, "ber") == 0)
-		error_code(-1);
-	map_reader(rt_map, src, 0);
 	i = 0;
 	rt_map->row_len = ft_strlen(rt_map->map[0]);
 	while (rt_map->map[i])
@@ -99,6 +92,24 @@ t_map	*map_init(char *src)
 		i++;
 	}
 	rt_map->row_num = i;
+	if (i > 128 || rt_map->row_len > 128)
+	{
+		write(2, "Error map size is bigger than 128\n", 34);
+		exit(1);
+	}
+}
+
+t_map	*map_init(char *src)
+{
+	t_map	*rt_map;
+
+	rt_map = (t_map *)malloc(sizeof(t_map));
+	if (!rt_map)
+		error_code(-500);
+	if (ft_strcmp(src + ft_strrchr(src, '.') + 1, "ber") == 0)
+		error_code(-1);
+	map_reader(rt_map, src, 0);
+	is_map_size_valid(rt_map);
 	map_counter(rt_map);
 	is_wall_correct(rt_map);
 	is_reachable(rt_map);

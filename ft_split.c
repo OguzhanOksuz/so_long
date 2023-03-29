@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:18:07 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/18 00:27:31 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/29 03:22:32 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,22 @@ char	*ft_read(int fd)
 		count = read(fd, rd, 42);
 		if (count == -1)
 		{
-			free(rd);
-			return (NULL);
+			write(2, "Error path is not a file\n", 25);
+			exit(1);
 		}
 		rd[count] = 0;
 		rt = ft_strjoin(rt, rd);
+	}
+	if (ft_strlen(rt) == 0)
+	{
+		write(2, "Error empty file\n", 17);
+		exit (1);
 	}
 	free (rd);
 	return (rt);
 }
 
-char
-	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	size_t	j;
