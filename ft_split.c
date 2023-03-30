@@ -6,7 +6,7 @@
 /*   By: ooksuz <ooksuz@student.42istanbul.com.tr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:18:07 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/03/29 04:48:18 by ooksuz           ###   ########.fr       */
+/*   Updated: 2023/03/30 04:25:04 by ooksuz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ char	**ft_split(char *s, char c)
 	char	**str;
 
 	i = 0;
-	st = 0;
 	if (!s)
 		return (NULL);
 	str = malloc((ftcount(s, c)) * sizeof(char *));
