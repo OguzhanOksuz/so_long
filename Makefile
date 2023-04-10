@@ -57,6 +57,7 @@ $(ARCS):
 	@make -C mlx/ all
 
 clean:
+	@make -C mlx / clean
 	rm -rf $(BOBJS)
 	rm -rf $(OBJS)
 
