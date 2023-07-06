@@ -55,7 +55,7 @@ void	render_coin_count(t_game *game)
 {
 	char	*move;
 
-	move = ft_itoa(game->move);
+	move = ft_itoa(*game->coin);
 	mlx_string_put(game->mlx, game->window, 0, 30, game->color << 16,
 		"Coin = ");
 	mlx_string_put(game->mlx, game->window, 50, 30, game->color << 16, move);

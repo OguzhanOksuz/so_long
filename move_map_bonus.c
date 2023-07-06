@@ -18,7 +18,7 @@ void	try_exit(t_game *game)
 	{
 		game->move++;
 		move_count(game->move);
-		write(1, "You Won!\n", 8);
+		write(1, "You Won!\n", 9);
 		exit(1);
 	}
 }
